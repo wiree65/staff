@@ -8,15 +8,12 @@
       <v-toolbar-title class="d-flex align-center title1">CS Banking</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
-    <v-navigation-drawer app v-model="drawer" stateless>
+
+
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary style="width: 12%;">
       <v-list flat>
         <v-list-item-group v-model="item" color="primary">
-          <router-link
-            :to="item.link"
-            v-for="(item, i) in items"
-            :key="i"
-            style="text-decoration: none;"
-          >
+          <router-link :to="item.link" v-for="(item, i) in items" :key="i" style="text-decoration: none;">
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-title v-text="item.text"></v-list-item-title>
@@ -29,35 +26,35 @@
   </nav>
 </template>
 <style>
-.v-toolbar__title {
-  font-size: 1.6em;
-  line-height: 1.5;
-  overflow: hidden;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 900;
-}
+  .v-toolbar__title {
+    font-size: 1.6em;
+    line-height: 1.5;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 900;
+  }
 </style>
 
 <script>
-export default {
-  name: "Nav",
+  export default {
+    name: "Nav",
 
-  data() {
-    return {
-      drawer: false,
-      item: 1,
-      items: [
-        { text: "Home", link: "/" },
-        { text: "Personal & Status", link: "/about" },
-        { text: "Work History", link: "/Open" },
-        { text: "Calendar", link: "/Open" },
-        { text: "ประกัน", link: "/Open" },
-        { text: "Log out", link: "/" }
-      ]
-    };
-  }
-};
+    data() {
+      return {
+        drawer: false,
+        item: 1,
+        items: [
+          { text: "Home", link: "/" },
+          { text: "Personal & Status", link: "/info" },
+          { text: "Work History", link: "/Open" },
+          { text: "Calendar", link: "/Open" },
+          { text: "ประกัน", link: "/Open" },
+          { text: "Log out", link: "/" }
+        ]
+      };
+    }
+  };
 </script>

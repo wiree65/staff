@@ -13,7 +13,7 @@
           </v-col>
           <v-col>
             <center>
-              <h1 style="font-size: 225%;margin-top: 18%;">CHAIR MAN</h1><br />
+              <h1 style="font-size: 225%;margin-top: 18%;">Staff</h1><br />
 
               <h4>Name: WIRAWAT</h4><br />
               <h4>Last name: JAIARREE</h4><br />

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- ////////////////////////////////////name last name///////////////////////////////// -->
+        <!-- ////////////////////////////////////name +last name///////////////////////////////// -->
         <v-container class="grey lighten-5" style="margin-left: 45%;padding-top: 0em;padding-bottom: 0em;">
             <v-row class="mb-6" no-gutters>
                 <v-col>
