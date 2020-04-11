@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
-import model.ATM;
 import model.QueryModel;
 import model.Staff;
 

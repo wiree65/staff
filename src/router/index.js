@@ -32,7 +32,13 @@ const routes = [
     name: "request",
     component: () =>
         import( "../views/request.vue")
+  },{
+    path: "/allStaff",
+    name: "allStaff",
+    component: () =>
+        import( "../views/allStaff.vue")
   }
+  
 ];
 
 const router = new VueRouter({

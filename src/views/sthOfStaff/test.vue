@@ -1,38 +1,56 @@
 <template>
     <div>
         <!-- ////////////////////////////////////address///////////////////////////////// -->
-        <v-container class="grey lighten-5" style="margin-left: 45%;padding-top: 0em;padding-bottom: 0em;">
-            <v-row class="mb-6" no-gutters>
-                <v-col>
-                    <v-card style="background-color: #64B5F6;width: 10em;height: 7em;">
-                        <h3 style="color: white;padding-top: 10%; text-align: center;">First Address</h3>
+        <v-container>
+
+            <v-row>
+                <v-col xs="2" md="2" class="col">
+                </v-col>
+                <v-col xs="1" md="1" class="col">
+                    <v-card style="background-color: #64B5F6;height: 7em;" class="vcard">
+                        <h3 class="h3">First Address</h3>
                     </v-card>
                 </v-col>
-                <v-col>
-                    <v-card style="width: 44em;height: 7em;">
-                        <h3 style="padding-top: 2%;padding-left: 5%;">xxx xxxx xxxxx xxxxxx </h3>
+                <v-col xs="7" md="7">
+                    <v-card style="height: 7em;" class="vcardb">
+                        <h3>{{data[0].name}}</h3>
                     </v-card>
                 </v-col>
+                
             </v-row>
         </v-container>
+        <v-container>
 
-        <v-container class="grey lighten-5" style="margin-left: 45%;padding-top: 0em;padding-bottom: 0em;">
-            <v-row class="mb-6" no-gutters>
-                <v-col>
-                    <v-card style="background-color: #64B5F6;width: 10em;height: 7em;">
-                        <h3 style="color: white;padding-top: 10%; text-align: center;">Second Address</h3>
+            <v-row>
+                <v-col xs="2" md="2" class="col">
+                </v-col>
+                <v-col xs="1" md="1" class="col">
+                    <v-card style="background-color: #64B5F6;height: 7em;" class="vcard">
+                        <h3 class="h3">First Address</h3>
                     </v-card>
                 </v-col>
-                <v-col>
-                    <v-card style="width: 44em;height: 7em;">
-                        <h3 style="padding-top: 2%;padding-left: 5%;">xxx xxxx xxxxx xxxxxx </h3>
+                <v-col xs="7" md="7">
+                    <v-card style="height: 7em;" class="vcardb">
+                        <h3>{{data[0].name}}</h3>
                     </v-card>
                 </v-col>
+                
             </v-row>
         </v-container>
     </div>
 </template>
-<style>
-
-
-</style>
+<script>
+    import equipment from "@/axios/axios";
+    export default {
+        data() {
+            return {
+                data: null
+            };
+        },
+        async mounted() {
+            const response = await equipment.get("/api/Staffs");
+            console.log(response.data);
+            this.data = response.data;
+        }
+    };
+</script>
