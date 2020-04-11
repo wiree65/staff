@@ -27,6 +27,12 @@ const routes = [
     component: () =>
         import( "../views/info.vue")
   }
+  ,{
+    path: "/request",
+    name: "request",
+    component: () =>
+        import( "../views/request.vue")
+  }
 ];
 
 const router = new VueRouter({

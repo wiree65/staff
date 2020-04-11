@@ -13,7 +13,7 @@
           </v-col>
           <v-col>
             <center>
-              <h1 style="font-size: 225%;margin-top: 18%;">CHAIR MAN</h1><br />
+              <h1 style="font-size: 225%;margin-top: 18%;">STAFF</h1><br />
 
               <h4>Name: WIRAWAT</h4><br />
               <h4>Last name: JAIARREE</h4><br />
@@ -38,9 +38,9 @@
             </v-btn>
           </router-link>
             <v-btn large color="#1E88E5" style="width: 90%;height: 17%;margin-left: 5%;margin-top: 5%;">
-              <p style="color: white;margin-top: 3%;font-size: 150%;">Approve Check</p>
+              <p style="color: white;margin-top: 3%;font-size: 150%;">Approve Cheque</p>
             </v-btn>
-            <router-link to="/about" style="text-decoration: none;">
+            <router-link to="/request" style="text-decoration: none;">
             <v-btn large color="#42A5F5" style="width: 90%;height: 17%;margin-left: 5%;margin-top: 5%;">
               <p style="color: white;margin-top: 3%;font-size: 150%;">Request Form</p>
             </v-btn></router-link>
@@ -53,6 +53,7 @@
         </template>
       </v-row>
     </v-container>
+
     <!-- //////////////////// -->
   </div>
 </template>
@@ -60,10 +61,14 @@
 <script>
   import Nav from "../components/Nav";
   import Carousel from "../components/Carousel";
+ 
   export default {
     components: {
       Nav,
       Carousel
+    },
+    created(){
+      console.log("HELLO");
     }
   };
 </script>

@@ -23,7 +23,7 @@
                   <v-col>
                     <h4>Status: Working</h4>
                     <br />
-                    <h4>Name(Thai): วิรวรรธ ใจอารีย์</h4>
+                    <h4>Position: Staff</h4>
                   </v-col>
                 </template>
               </v-row>
@@ -37,7 +37,7 @@
     <template style="position: absolute;height: 5%;">
       <v-card style="height: 5%;">
         <v-toolbar color="#42A5F5" dark flat prominent
-          style="margin-top: 21%;position: absolute;margin-left: 25%;height:60px;width: 50%;"><br/>
+          style="margin-top: 21%;position: absolute;margin-left: 25%;height:60px;width: 50%;"><br />
           <template v-slot:extension>
             <v-tabs v-model="tabs" centered style="margin-top: -35%;">
               <v-tab>Personal Info</v-tab>

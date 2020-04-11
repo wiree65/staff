@@ -10,7 +10,7 @@
                 </v-col>
                 <v-col>
                     <v-card style="width: 17em;height: 3em;">
-                        <h3 style="padding: 4%;">Mr.Wirawat </h3>
+                        <h3 style="padding: 4%;">{{data[0].name}}</h3>
                     </v-card>
                 </v-col>
                 <v-col>
@@ -20,7 +20,7 @@
                 </v-col>
                 <v-col>
                     <v-card style="width: 17em;height: 3em;">
-                        <h3 style="padding: 4%;">Jaiarree</h3>
+                        <h3 style="padding: 4%;">{{data[0].lastname}}</h3>
                     </v-card>
                 </v-col>
             </v-row>
@@ -36,7 +36,7 @@
                 </v-col>
                 <v-col>
                     <v-card style="width: 17em;height: 3em;">
-                        <h3 style="padding: 4%;">62130500225 </h3>
+                        <h3 style="padding: 4%;">{{data[0].id}} </h3>
                     </v-card>
                 </v-col>
                 <v-col>
@@ -46,7 +46,7 @@
                 </v-col>
                 <v-col>
                     <v-card style="width: 17em;height: 3em;">
-                        <h3 style="padding: 4%;">Katak</h3>
+                        <h3 style="padding: 4%;">{{data[0].name}}</h3>
                     </v-card>
                 </v-col>
             </v-row>
@@ -110,3 +110,21 @@
 
 
 </style>
+<script>
+import equipment from "@/axios/axios"
+export default {
+data(){
+    return{
+        data: null,
+    }
+    
+},
+async mounted(){
+   
+    const response = await equipment.get('/api/Staffs');
+    console.log(response.data);
+    this.data = response.data;
+}
+ 
+};
+</script>

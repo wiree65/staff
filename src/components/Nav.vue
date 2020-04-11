@@ -10,10 +10,10 @@
     </v-app-bar>
 
 
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary style="width: 12%;">
+    <v-navigation-drawer v-model="drawer" absolute bottom temporary style="width: 15%;">
       <v-list flat>
-        <v-list-item-group v-model="item" color="primary">
-          <router-link :to="item.link" v-for="(item, i) in items" :key="i" style="text-decoration: none;">
+        <v-list-item-group v-model="item" color="black">
+          <router-link :to="item.link" v-for="(item, i) in items" :key="i" style="text-decoration: none;color: black;">
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-title v-text="item.text"></v-list-item-title>
@@ -47,11 +47,11 @@
         drawer: false,
         item: 1,
         items: [
-          { text: "Home", link: "/" },
+          { text: "Home", link: "/homepage" },
           { text: "Personal & Status", link: "/info" },
-          { text: "Work History", link: "/Open" },
+          { text: "Approve Cheque", link: "/Open" },
+          { text: "Request Form", link: "/Open" },
           { text: "Calendar", link: "/Open" },
-          { text: "ประกัน", link: "/Open" },
           { text: "Log out", link: "/" }
         ]
       };
