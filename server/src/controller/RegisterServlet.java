@@ -23,19 +23,22 @@ public class RegisterServlet extends HttpServlet {
         try(PrintWriter out = response.getWriter()) {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            String name = request.getParameter("name"); String lastname = request.getParameter("lastname");
-            String email = request.getParameter("email");String tel = request.getParameter("tel");
-            String date_of_birth = request.getParameter("date_of_birth");int department = request.getParameter("department");
+            String name = request.getParameter("name");
+            String lastname = request.getParameter("lastname");
+            String email = request.getParameter("email");
+            String tel = request.getParameter("tel");
+            String date_of_birth = request.getParameter("date_of_birth");
+            String department = request.getParameter("department");
             String address = request.getParameter("address");
             String date_of_employed = request.getParameter("date_of_employed");
             String date_of_fired = request.getParameter("date_of_fired");
-            int salary = request.getParameter("salary");
-            int branch = request.getParameter("branch");
+            String salary = request.getParameter("salary");
+            String branch = request.getParameter("branch");
             String citizen_id = request.getParameter("citizen_id");
             String sex = request.getParameter("sex");
 
             QueryModel queryModel = new QueryModel();
-            queryModel.createFullAccount();
+//            queryModel.createFullAccount( username, password, name, lastname, email, tel, date_of_birth, department, address, date_of_employed, date_of_fired, salary, branch, citizen_id, sex);
             out.print("success");
         }catch (Exception e) {
             e.printStackTrace();

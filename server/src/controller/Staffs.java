@@ -49,23 +49,23 @@ public class Staffs extends HttpServlet {
                 String sex = result.getString("sex");
                 Staff staff = new Staff(id,username,password,name,lastname,email,tel,date_of_birth, department,address,
                         date_of_employed,date_of_fired,salary,branch,nickname,citizen_id,sex);
+
                 b.add(staff);
             }
             Gson gson = new Gson();
             PrintWriter out = response.getWriter();
             int index = 0;
             out.print("[\n");
-            for(Staff temp:b){
+            for(Staff temp:b) {
                 String jsonData = gson.toJson(temp);
                 out.println(jsonData);
                 index++;
-                if(index < b.size()){
+                if (index < b.size()) {
                     out.print(",");
                 }
                 out.println("\n");
 
             }
-            out.print(nickname);
             out.print("]\n");
         }
         catch(Exception e){

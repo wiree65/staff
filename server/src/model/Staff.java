@@ -103,11 +103,11 @@ public class Staff {
         this.date_of_birth = date_of_birth;
     }
 
-    public String getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(int department) {
         this.department = department;
     }
 
@@ -147,7 +147,7 @@ public class Staff {
         return branch;
     }
 
-    public void setBranch(String branch) {
+    public void setBranch(int branch) {
         this.branch = branch;
     }
 
