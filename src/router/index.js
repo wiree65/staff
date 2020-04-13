@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 // import Home from "../views/Home.vue";
 // import Nav from "../components/Nav";
 import staff from "../views/staff";
+import register from "../views/register";
 Vue.use(VueRouter);
 
 const routes = [
@@ -37,6 +38,10 @@ const routes = [
     name: "allStaff",
     component: () =>
         import( "../views/allStaff.vue")
+  },{
+    path: "/register",
+    name: "register",
+    component:register
   }
   
 ];
