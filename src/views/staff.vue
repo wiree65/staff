@@ -13,7 +13,7 @@
               </v-col>
               <v-col cols="6">
                 <v-col cols="2">
-                 
+
                 </v-col>
                 <v-col>
                   <h1 class="center">STAFF</h1>
@@ -31,32 +31,33 @@
             </v-row>
           </v-container>
         </v-col>
-
-        <v-col cols="6" style="padding: 12px;">
-          <v-container class="con1" style="padding: 12px;">
-            <v-col style="padding: 12px;">
+        <!-- align-items: center; -->
+        <!-- justify-content: center; -->
+        <v-col cols="6" >
+          <v-container class="con1" style="display:grid;">
+            <v-col >
               <router-link to="/info">
-                <v-btn large color="#1976D2" style="width: 90%;height: 17%;margin-left: 5%;">
-                  <p style="color: white;margin-top: 3%;font-size:150%;">Personal Info & Status</p>
+                <v-btn large color="#1976D2" style="width: 90%;;margin-left: 5%;">
+                  <p style="color: white;font-size:150%;margin-bottom: 0px;">Personal Info & Status</p>
                 </v-btn>
               </router-link>
             </v-col>
-            <v-col style="padding: 12px;">
-              <v-btn large color="#1E88E5" style="width: 90%;height: 17%;margin-left: 5%;">
-                <p style="color: white;margin-top: 3%;font-size: 150%;">Approve Cheque</p>
+            <v-col >
+              <v-btn large color="#1E88E5" style="width: 90%;;margin-left: 5%;">
+                <p style="color: white;font-size: 150%;margin-bottom: 0px;">Approve Cheque</p>
               </v-btn>
             </v-col>
-            <v-col style="padding: 12px;"> 
+            <v-col >
               <router-link to="/request" style="text-decoration: none;">
-                <v-btn large color="#42A5F5" style="width: 90%;height: 17%;margin-left: 5%;">
-                  <p style="color: white;margin-top: 3%;font-size: 150%;">Request Form</p>
+                <v-btn large color="#42A5F5" style="width: 90%;margin-left: 5%;">
+                  <p style="color: white;font-size: 150%;margin-bottom: 0px;">Request Form</p>
                 </v-btn>
               </router-link>
-            </v-col >
-            <v-col style="padding: 12px;">
+            </v-col>
+            <v-col>
               <router-link to="/about" style="text-decoration: none;">
-                <v-btn large color="#64B5F6" style="width: 90%;height: 17%;margin-left: 5%;">
-                  <p style="color: white;margin-top: 3%;font-size: 150%;">Calendar</p>
+                <v-btn large color="#64B5F6" style="width: 90%;margin-left: 5%;">
+                  <p style="color: white;font-size: 150%;margin-bottom: 0px;">Calendar</p>
                 </v-btn>
               </router-link>
             </v-col>
