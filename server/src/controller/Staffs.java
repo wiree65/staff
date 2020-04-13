@@ -38,14 +38,17 @@ public class Staffs extends HttpServlet {
                 String email = result.getString("email");
                 String tel = result.getString("tel");
                 String date_of_birth = result.getString("date_of_birth");
-                String department = result.getString("department");
+                int department = result.getInt("department");
                 String address = result.getString("address");
                 String date_of_employed = result.getString("date_of_employed");
                 String date_of_fired = result.getString("date_of_fired");
                 float salary = result.getFloat("salary");
-                String branch = result.getString("branch");
+                int branch = result.getInt("branch");
+                String nickname = result.getString("nickname");
+                String citizen_id = result.getString("citizen_id");
+                String sex = result.getString("sex");
                 Staff staff = new Staff(id,username,password,name,lastname,email,tel,date_of_birth, department,address,
-                        date_of_employed,date_of_fired,salary,branch);
+                        date_of_employed,date_of_fired,salary,branch,nickname,citizen_id,sex);
                 b.add(staff);
             }
             Gson gson = new Gson();
@@ -60,7 +63,9 @@ public class Staffs extends HttpServlet {
                     out.print(",");
                 }
                 out.println("\n");
+
             }
+            out.print(nickname);
             out.print("]\n");
         }
         catch(Exception e){

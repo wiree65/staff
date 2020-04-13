@@ -67,6 +67,17 @@ public class QueryModel {
         executeQuery(query);
 
     }
+
+    public void createFullAccount(String username,String password,String name,String lastname,String email,String tel,String date_of_birth,int department,String address,String date_of_employed,String date_of_fired,int salary,int branch,String citizen_id,char sex) throws NoSuchAlgorithmException {
+        String newpassword = username+password;
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        String hashpassword = toHexString(md.digest(newpassword.getBytes(StandardCharsets.UTF_8)));
+        String query = String.format("INSERT INTO staff(username, password, name, lastname, email, tel, date_of_birth, department, address, date_of_employed, date_of_fired, salary, branch,citizen_id,sex) " +
+                "VALUES('%s','%s','%s','%s','%s','%s','%s','%d','%s','%s','%s','%d','%d','%s','%s');",username,hashpassword,name,lastname,email,tel,date_of_birth,department,address,date_of_employed,date_of_fired,salary,branch,citizen_id,sex);
+        System.out.println(query);
+        executeQuery(query);
+
+    }
     public String toHexString(byte[] hash)
     {
         // Convert byte array into signum representation

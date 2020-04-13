@@ -9,14 +9,17 @@ public class Staff {
     String email;
     String tel;
     String date_of_birth;
-    String department; //dont want
+    int department; //dont want
     String address;
     String date_of_employed;
     String date_of_fired;
     float salary;
-    String branch;
+    int branch;
+    String nickname;
+    String citizen_id;
+    String sex;
 
-    public Staff(int id, String username, String password, String name, String lastname, String email, String tel, String date_of_birth, String department, String address, String date_of_employed, String date_of_fired, float salary, String branch) {
+    public Staff(int id, String username, String password, String name, String lastname, String email, String tel, String date_of_birth, int department, String address, String date_of_employed, String date_of_fired, float salary, int branch,String nickname, String citizen_id, String sex) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -31,6 +34,9 @@ public class Staff {
         this.date_of_fired = date_of_fired;
         this.salary = salary;
         this.branch = branch;
+        this.citizen_id = citizen_id;
+        this.nickname = nickname;
+        this.sex = sex;
     }
 
     public int getId() {
@@ -137,11 +143,35 @@ public class Staff {
         this.salary = salary;
     }
 
-    public String getBranch() {
+    public int getBranch() {
         return branch;
     }
 
     public void setBranch(String branch) {
         this.branch = branch;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getCitizen_id() {
+        return citizen_id;
+    }
+
+    public void setCitizen_id(String citizen_id) {
+        this.citizen_id = citizen_id;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }
