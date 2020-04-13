@@ -38,7 +38,7 @@
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 input {
   position: absolute;
   border: none;

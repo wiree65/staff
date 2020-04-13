@@ -80,7 +80,7 @@
     }
   };
 </script>
-<style>
+<style scoped>
   .col1 {
     padding: 12px;
 

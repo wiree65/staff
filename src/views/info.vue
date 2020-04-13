@@ -126,7 +126,7 @@
     }
   };
 </script>
-<style>
+<style scoped>
   .h4 {
     text-align: center;
     justify-content: center;

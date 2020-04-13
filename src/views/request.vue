@@ -23,13 +23,8 @@
                     required
                   ></v-text-field>
                 </v-col>
-<<<<<<< Updated upstream
                 <v-col cols="2"></v-col>
                 <v-col cols="4">
-=======
-                <v-col cols="1"></v-col>
-                <v-col md="3">
->>>>>>> Stashed changes
                   <v-text-field
                     v-model="lastname"
                     :rules="nameRules"
@@ -222,17 +217,13 @@ export default {
   components: {
     Nav
   },
-<<<<<<< Updated upstream
   //Name & Lastname Required
-=======
->>>>>>> Stashed changes
   data: () => ({
     valid: false,
     firstname: "",
     lastname: "",
     nameRules: [
       v => !!v || "Name is required",
-<<<<<<< Updated upstream
       v => v.length <= 20 || "Name must be less than 20 characters"
     ],
     //Brunch Required
@@ -248,15 +239,10 @@ export default {
       v => v.length <= 10 || "Phone No. must be less than 10 digits"
     ],
     //Email Required
-=======
-      v => v.length <= 10 || "Name must be less than 10 characters"
-    ],
->>>>>>> Stashed changes
     email: "",
     emailRules: [
       v => !!v || "E-mail is required",
       v => /.+@.+/.test(v) || "E-mail must be valid"
-<<<<<<< Updated upstream
     ],
     //Department Drop-down
     select: null,
@@ -270,10 +256,6 @@ export default {
   date: new Date().toISOString().substr(0, 10),
   menu: false,
   menu2: false
-=======
-    ]
-  })
->>>>>>> Stashed changes
 };
 </script>
 <style>
