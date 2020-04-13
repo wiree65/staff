@@ -28,17 +28,17 @@ public class RegisterServlet extends HttpServlet {
             String email = request.getParameter("email");
             String tel = request.getParameter("tel");
             String date_of_birth = request.getParameter("date_of_birth");
-            String department = request.getParameter("department");
+            int department = Integer.parseInt(request.getParameter("department"));
             String address = request.getParameter("address");
             String date_of_employed = request.getParameter("date_of_employed");
             String date_of_fired = request.getParameter("date_of_fired");
-            String salary = request.getParameter("salary");
-            String branch = request.getParameter("branch");
+            float salary = Float.parseFloat(request.getParameter("salary"));
+            int branch = Integer.parseInt(request.getParameter("branch"));
             String citizen_id = request.getParameter("citizen_id");
             String sex = request.getParameter("sex");
 
             QueryModel queryModel = new QueryModel();
-//            queryModel.createFullAccount( username, password, name, lastname, email, tel, date_of_birth, department, address, date_of_employed, date_of_fired, salary, branch, citizen_id, sex);
+            queryModel.createFullAccount( username, password, name, lastname, email, tel, date_of_birth, department, address, date_of_employed, date_of_fired, salary, branch, citizen_id, sex);
             out.print("success");
         }catch (Exception e) {
             e.printStackTrace();
