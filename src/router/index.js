@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 // import Nav from "../components/Nav";
 import staff from "../views/staff";
 import register from "../views/register";
+import accesshistory from "../views/accesshistory";
 Vue.use(VueRouter);
 
 const routes = [
@@ -42,6 +43,11 @@ const routes = [
     path: "/register",
     name: "register",
     component:register
+  },
+  {
+    path: "/accesshistory",
+    name: "accesshistory",
+    component:accesshistory
   }
   
 ];
