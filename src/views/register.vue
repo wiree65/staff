@@ -3,21 +3,27 @@
     <Nav />
     <!-- //////////////request form/////////////// -->
     <br />
-    <h1 class="text-center">Request Form</h1>
+    <h1 class="text-center">Registration</h1>
     <br />
     <div>
       <v-card class="pa-md-4 mx-lg-auto" color="white" width="50%">
         <v-card-text>
           <v-form v-model="valid">
             <v-container>
-              <!-- Row 1: Firstname & Lastname -->
+              <br />
+              <!-- Row 1: Header Part No.1 -->
+              <v-row>
+                <h2>Part 1: Personal Info</h2>
+              </v-row>
+              <br />
+              <br />
+              <!-- Row 2: Firstname & Lastname -->
               <v-row>
                 <v-col cols="1"></v-col>
                 <v-col cols="4">
                   <v-text-field
                     v-model="firstname"
                     :rules="nameRules"
-                    :counter="20"
                     label="First name"
                     clearable
                     required
@@ -27,18 +33,73 @@
                 <v-col cols="4">
                   <v-text-field
                     v-model="lastname"
-                    :rules="nameRules"
-                    :counter="20"
+                    :rules="lastnameRules"
                     label="Last name"
                     clearable
                     required
                   ></v-text-field>
                 </v-col>
               </v-row>
-              <!-- Row 2: Email & Phone No. -->
+              <!-- Row 3: Nickname & CitizenID -->
               <v-row>
                 <v-col cols="1"></v-col>
                 <v-col md="4">
+                  <v-text-field
+                    v-model="nickname"
+                    :rules="nicknameRules"
+                    label="Nickname"
+                    clearable
+                    required
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="2"></v-col>
+                <v-col md="4">
+                  <v-text-field
+                    v-model="Citizen"
+                    :rules="citizenRules"
+                    :counter="13"
+                    label="Citizen ID"
+                    clearable
+                    required
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+              <!-- Row 4: Birthdate & Sex -->
+              <v-row>
+                <v-col cols="1"></v-col>
+                <v-col md="4">
+                  <v-menu
+                    ref="menu"
+                    v-model="menu"
+                    :close-on-content-click="false"
+                    :return-value.sync="date"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field v-model="date" label="Birthdate" readonly v-on="on" required></v-text-field>
+                    </template>
+                    <v-date-picker v-model="date" no-title scrollable>
+                      <v-spacer></v-spacer>
+                      <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
+                      <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+                    </v-date-picker>
+                  </v-menu>
+                </v-col>
+                <v-col cols="2"></v-col>
+                <v-col md="4">
+                  Sex
+                  <v-radio-group v-model="row" row>
+                    <v-radio label="Male" value="radio-1"></v-radio>
+                    <v-radio label="Female" value="radio-2"></v-radio>
+                  </v-radio-group>
+                </v-col>
+              </v-row>
+              <!-- Row 5: Email & Phone -->
+              <v-row>
+                <v-col cols="1"></v-col>
+                <v-col cols="4">
                   <v-text-field
                     v-model="email"
                     :rules="emailRules"
@@ -48,7 +109,7 @@
                   ></v-text-field>
                 </v-col>
                 <v-col cols="2"></v-col>
-                <v-col md="4">
+                <v-col cols="4">
                   <v-text-field
                     v-model="tel"
                     :rules="telRules"
@@ -59,7 +120,50 @@
                   ></v-text-field>
                 </v-col>
               </v-row>
-              <!-- Row 3: Department & Brunch -->
+              <!-- Row 6: Address -->
+              <v-row>
+                <v-col cols="1"></v-col>
+                <v-col md="10">
+                  <v-text-field label="Address" :rules="rules" hide-details="auto"></v-text-field>
+                </v-col>
+              </v-row>
+              <br />
+              <br />
+              <!-- Row 7: Header Part No.2 -->
+              <v-row>
+                <h2>Part 2: Office</h2>
+              </v-row>
+              <br />
+              <br />
+              <!-- Row 8: Username & Password -->
+              <v-row>
+                <v-col cols="1"></v-col>
+                <v-col md="4">
+                  <v-text-field
+                    v-model="Username"
+                    :rules="rules1"
+                    label="Username"
+                    clearable
+                    required
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="2"></v-col>
+                <v-col md="4">
+                  <v-text-field
+                    v-model="password"
+                    :rules="passwordRules"
+                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                    :rules2="[rules2.min]"
+                    :type="show1 ? 'text' : 'password'"
+                    name="input-10-1"
+                    label="Password"
+                    hint="At least 8 characters"
+                    counter
+                    @click:append="show1 = !show1"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+              <!-- Row 9: Department & Brunch -->
               <v-row>
                 <v-col cols="1"></v-col>
                 <v-col md="4">
@@ -74,57 +178,20 @@
                 <v-col cols="2"></v-col>
                 <v-col md="4">
                   <v-text-field
-                    v-model="brunch"
-                    :rules="brunchRules"
+                    v-model="branch"
+                    :rules="branchRules"
                     :counter="5"
-                    label="Brunch"
+                    label="Branch"
                     clearable
                     required
                   ></v-text-field>
                 </v-col>
               </v-row>
-              <!-- Row 4: Type of topic -->
-              <v-row>
-                <v-col cols="1"></v-col>
-                <v-col md="6">
-                  <v-select
-                    v-model="select"
-                    :items="topics"
-                    :rules="[v => !!v || 'Input your type of topic']"
-                    label="Type of topic"
-                    required
-                  ></v-select>
-                </v-col>
-              </v-row>
-              <!-- Row 5: Description -->
-              <v-row>
-                <v-col cols="1"></v-col>
-                <v-col md="10">
-                  <v-textarea name="input-7-1" label="Description"></v-textarea>
-                </v-col>
-              </v-row>
-              <!-- Row 6: From-to of absent -->
+              <!-- Row 10: Salary & Date of Employed -->
               <v-row>
                 <v-col cols="1"></v-col>
                 <v-col md="4">
-                  <v-menu
-                    ref="menu"
-                    v-model="menu"
-                    :close-on-content-click="false"
-                    :return-value.sync="date"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="290px"
-                  >
-                    <template v-slot:activator="{ on }">
-                      <v-text-field v-model="date" label="From" readonly v-on="on" required></v-text-field>
-                    </template>
-                    <v-date-picker v-model="date" no-title scrollable>
-                      <v-spacer></v-spacer>
-                      <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
-                      <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
-                    </v-date-picker>
-                  </v-menu>
+                  <v-text-field label="Salary" suffix="฿"></v-text-field>
                 </v-col>
                 <v-col cols="2"></v-col>
                 <v-col md="4">
@@ -138,7 +205,7 @@
                     min-width="290px"
                   >
                     <template v-slot:activator="{ on }">
-                      <v-text-field v-model="date" label="To" readonly v-on="on"></v-text-field>
+                      <v-text-field v-model="date" label="Date of Employed" readonly v-on="on"></v-text-field>
                     </template>
                     <v-date-picker v-model="date" no-title scrollable>
                       <v-spacer></v-spacer>
@@ -148,49 +215,12 @@
                   </v-menu>
                 </v-col>
               </v-row>
-              <!-- Row 7: Import File -->
-              <v-row>
-                <v-col cols="1"></v-col>
-                <v-col cols="10">
-                  <v-file-input multiple label="Import File (if any)"></v-file-input>
-                </v-col>
-              </v-row>
-              <!-- Row 8: CheckBox -->
-              <v-row>
-                <v-col cols="1"></v-col>
-                <v-col cols="10">
-                  <v-checkbox v-model="checkbox">
-                    <template v-slot:label>
-                      <div>
-                        I agree this information is true. If the information above that is lie or/and not true,
-                        <v-tooltip
-                          bottom
-                        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam expedita veritatis temporibus repellat fugiat, voluptatibus esse corporis rerum provident nam, quidem quod debitis delectus deleniti reiciendis quisquam labore impedit porro.</v-tooltip>I glad to receive the punishment and can ground for immediate termination.
-                      </div>
-                    </template>
-                  </v-checkbox>
-                </v-col>
-              </v-row>
             </v-container>
           </v-form>
         </v-card-text>
       </v-card>
     </div>
     <br />
-    <!-- Annotations -->
-    <v-row>
-      <v-col cols="3"></v-col>
-      <v-col cols="9">
-        <b>Annotations:</b>
-        <br />
-        <br />- You must request form in 3-5 days notice.
-        <br />- This request form might send to your manager, head of brunch and head of department automatically.
-        <br />- After you turn in the form, you must wait comment from commitee and return back in the system.
-        <br />- If your request don’t return back after 2 days. Please click <b>“Contact Admin”</b> button in the system and tell some message again.
-        <br />
-        <br />
-      </v-col>
-    </v-row>
     <!-- Buttons -->
     <v-row>
       <v-col cols="5"></v-col>
@@ -201,7 +231,7 @@
           </div>
         </v-col>
       </router-link>
-      <router-link to="/homepage">
+      <router-link to="/">
         <v-col cols="1">
           <div class="my-2">
             <v-btn color="primary">Submit</v-btn>
@@ -217,26 +247,34 @@ export default {
   components: {
     Nav
   },
-  //Name & Lastname Required
+  //Name Required
   data: () => ({
     valid: false,
     firstname: "",
+    nameRules: [v => !!v || "Name is required"],
+    //Lastname Required
     lastname: "",
-    nameRules: [
-      v => !!v || "Name is required",
-      v => v.length <= 20 || "Name must be less than 20 characters"
+    lastnameRules: [v => !!v || "Lastname is required"],
+    //Nickname Required
+    nickname: "",
+    nicknameRules: [v => !!v || "Nickname is required"],
+    //Citizen ID Required
+    Citizen: "",
+    citizenRules: [
+      v => !!v || "Citizen ID is required",
+      v => v.length <= 13 || "Citizen ID must be 13 digits"
     ],
-    //Brunch Required
-    brunch: "",
-    brunchRules: [
-      v => !!v || "Brunch is required",
-      v => v.length <= 5 || "Brunch must be less than 5 digits"
+    //Branch Required
+    branch: "",
+    branchRules: [
+      v => !!v || "Branch is required",
+      v => v.length <= 5 || "Branch must be less than 5 digits"
     ],
     //Phone No. Required
     tel: "",
     telRules: [
       v => !!v || "Phone No. is required",
-      v => v.length <= 10 || "Phone No. must be less than 10 digits"
+      v => v.length >= 10 || "Phone No. must be 10 digits"
     ],
     //Email Required
     email: "",
@@ -244,13 +282,47 @@ export default {
       v => !!v || "E-mail is required",
       v => /.+@.+/.test(v) || "E-mail must be valid"
     ],
+    //Address Required
+    rules: [value => !!value || "Address is required"],
+    //Username Required
+    Username: "",
+    rules1: [
+      value => !!value || "Username is required",
+      value => value.length >= 5 || "Username must be at least 5 characters"
+    ],
+    //Password Required
+    show1: false,
+    password: "",
+    passwordRules: [
+      v => !!v || "Password is required",
+      v => v.length >= 8 || "Password must be at least 8 characters"
+    ],
+    rules2: {
+      min: v => v.length >= 8 || "Min 8 characters"
+    },
     //Department Drop-down
     select: null,
-    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-    //Type of Topic Drop-down
-    topics: ["Item 1", "Item 2", "Item 3", "Item 4"],
-    checkbox: false,
-    lazy: false
+    items: [
+      "MSME",
+      "Rural & Agri Business",
+      "Security",
+      "Information Technology",
+      "Treasury",
+      "Wealth Management & Third Party Products",
+      "Corporate Communications",
+      "Support Services & Branch Expansion",
+      "Human Resources",
+      "Large Corporate & Loan Syndication",
+      "Financial Inclusion",
+      "Law Department",
+      "Credit Recovery",
+      "Risk Management",
+      "Central Audit & Inspection",
+      "Credit Monitoring and Restructuring",
+      "Digital Banking",
+      "Govt. Business Dept",
+      "Branch Manager"
+    ]
   }),
   //From-To Date of absent
   date: new Date().toISOString().substr(0, 10),
@@ -259,4 +331,7 @@ export default {
 };
 </script>
 <style>
+h2 {
+  color: black;
+}
 </style>
