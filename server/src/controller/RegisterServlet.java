@@ -28,17 +28,21 @@ public class RegisterServlet extends HttpServlet {
             String email = request.getParameter("email");
             String tel = request.getParameter("tel");
             String date_of_birth = request.getParameter("date_of_birth");
-            int department = Integer.parseInt(request.getParameter("department"));
+            String department = request.getParameter("department");
             String address = request.getParameter("address");
             String date_of_employed = request.getParameter("date_of_employed");
             String date_of_fired = request.getParameter("date_of_fired");
-            float salary = Float.parseFloat(request.getParameter("salary"));
-            int branch = Integer.parseInt(request.getParameter("branch"));
+            String salary = request.getParameter("salary");
+            String branch = request.getParameter("branch");
             String citizen_id = request.getParameter("citizen_id");
             String sex = request.getParameter("sex");
-
+            String nickname=request.getParameter("nickname");
             QueryModel queryModel = new QueryModel();
-            queryModel.createFullAccount( username, password, name, lastname, email, tel, date_of_birth, department, address, date_of_employed, date_of_fired, salary, branch, citizen_id, sex);
+//            queryModel.createAccountAndbirth(username,password,date_of_birth);
+//            queryModel.createAccount(username,password);
+            queryModel.createAccountAndSalary(username,password,salary,nickname,name,lastname,date_of_birth,tel,email,citizen_id,sex,address,date_of_employed,branch);
+//            queryModel.createFullAccount( username, password, name, lastname, email, tel, date_of_birth, department, address, date_of_employed, date_of_fired, salary, branch, citizen_id, sex,nickname);
+//           queryModel.justDepartment(department);
             out.print("success");
         }catch (Exception e) {
             e.printStackTrace();

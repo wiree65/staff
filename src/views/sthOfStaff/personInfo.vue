@@ -135,14 +135,14 @@
     }
 
     .vcard {
-        background-color: #64B5F6;
+        background-color: white;
         height: 3em;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .vcardb {
-        background-color: #64B5F6;
+       
         height: 3em;
         display: flex;
         align-items: center;

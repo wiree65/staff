@@ -19,10 +19,12 @@ public class LoginServlet extends HttpServlet {
             String password = request.getParameter("password");
             QueryModel queryModel = new QueryModel();
             if(queryModel.checkPassword(username,password)){
-                out.print("Login");
+                getServletContext().getRequestDispatcher("localhost:8080/").forward(request,response);
+                out.print("success");
+                System.out.println("success");
             }
             else{
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+                getServletContext().getRequestDispatcher("http://localhost:8080/").forward(request,response);
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -32,8 +34,11 @@ public class LoginServlet extends HttpServlet {
 
     }
 
-    private void setAccessControlHeaders(HttpServletResponse resp) {
-        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
-        resp.setHeader("Access-Control-Allow-Methods", "GET");
+    private void setAccessControlHeaders(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Origin","http://localhost:8080");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.addHeader("Access-Control-Max-Age", "1728000");
     }
 }

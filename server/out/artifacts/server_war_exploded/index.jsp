@@ -18,7 +18,7 @@
     <input type="submit">
   </form>
   Login
-  <form method="POST" action = "LoginServlet">
+  <form method="POST" action = "SigninServlet">
     <input type="text" name="username">
     <input type="password" name="password">
     <input type="submit">

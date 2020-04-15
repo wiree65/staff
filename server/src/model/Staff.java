@@ -13,13 +13,13 @@ public class Staff {
     String address;
     String date_of_employed;
     String date_of_fired;
-    float salary;
-    int branch;
+    String salary;
+    String branch;
     String nickname;
     String citizen_id;
     String sex;
 
-    public Staff(int id, String username, String password, String name, String lastname, String email, String tel, String date_of_birth, int department, String address, String date_of_employed, String date_of_fired, float salary, int branch,String nickname, String citizen_id, String sex) {
+    public Staff(int id, String username, String password, String name, String lastname, String email, String tel, String date_of_birth, int department, String address, String date_of_employed, String date_of_fired, String salary, String branch,String nickname, String citizen_id, String sex) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -135,19 +135,19 @@ public class Staff {
         this.date_of_fired = date_of_fired;
     }
 
-    public float getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 
-    public int getBranch() {
+    public String getBranch() {
         return branch;
     }
 
-    public void setBranch(int branch) {
+    public void setBranch(String branch) {
         this.branch = branch;
     }
 

@@ -42,8 +42,8 @@ public class Staffs extends HttpServlet {
                 String address = result.getString("address");
                 String date_of_employed = result.getString("date_of_employed");
                 String date_of_fired = result.getString("date_of_fired");
-                float salary = result.getFloat("salary");
-                int branch = result.getInt("branch");
+                String salary = result.getString("salary");
+                String branch = result.getString("branch");
                 String nickname = result.getString("nickname");
                 String citizen_id = result.getString("citizen_id");
                 String sex = result.getString("sex");

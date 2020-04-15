@@ -3,7 +3,8 @@ import VueRouter from "vue-router";
 // import Home from "../views/Home.vue";
 // import Nav from "../components/Nav";
 import staff from "../views/staff";
-import Registerr from "../views/Registerr";
+import register from "../views/register";
+import register1 from "../views/Registerr";
 Vue.use(VueRouter);
 
 const routes = [
@@ -17,11 +18,6 @@ const routes = [
     name: "About",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }, {
-    path: "/",
-    name: "Logout",
-    component: () =>
-      import("../views/Logout.vue")
   },
   {
     path: "/info",
@@ -40,19 +36,20 @@ const routes = [
     component: () =>
       import("../views/allStaff.vue")
   }, {
-    path: "/loginv1",
+    path: "/",
     name: "loginv1",
     component: () =>
       import("../views/loginv1.vue")
   }, {
-    path: "/Registerr",
-    name: "Registerr",
-    component: Registerr
-
+    path: "/register",
+    name: "register",
+    component: register
+  }, {
+    path: "/register1",
+    name: "register1",
+    component: register1
   }
-
-
-
+ 
 ];
 
 const router = new VueRouter({

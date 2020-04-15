@@ -1,93 +1,104 @@
 <template>
-    <div>
-        <h4>Register</h4>
-        <form>
-            <label for="name">Name</label>
-            <div>
-                <input id="name" type="text" v-model="name" required autofocus>
-            </div>
+  <div class="bg py-12">
+    <div class="box white pa-12">
+      <div class="my-4">
+        <div class="display-2 font-weight-bold">Welcome to, CSB</div>
+        <div class="display-1 font-weight-light">Please Login</div>
+      </div>
+      <form class="my-4">
+        <v-text-field
+          v-model="name"
+          :error-messages="nameErrors"
+          :counter="10"
+          label="Name"
+          required
+          @input="$v.name.$touch()"
+          @blur="$v.name.$touch()"
+          @keypress.enter="login"
+        ></v-text-field>
+        <v-text-field
+          v-model="password"
+          :error-messages="passwordErrors"
+          label="Password"
+          required
+          type="password"
+          @input="$v.password.$touch()"
+          @blur="$v.password.$touch()"
+          @keypress.enter="login"
+        ></v-text-field>
 
-            <label for="email" >E-Mail Address</label>
-            <div>
-                <input id="email" type="email" v-model="email" required>
-            </div>
-
-            <label for="password">Password</label>
-            <div>
-                <input id="password" type="password" v-model="password" required>
-            </div>
-
-            <label for="password-confirm">Confirm Password</label>
-            <div>
-                <input id="password-confirm" type="password" v-model="password_confirmation" required>
-            </div>
-
-            <label for="password-confirm">Is this an administrator account?</label>
-            <div>
-                <select v-model="is_admin">
-                    <option value=1>Yes</option>
-                    <option value=0>No</option>
-                </select>
-            </div>
-
-            <div>
-                <button type="submit" @click="handleSubmit">
-                    Register
-                </button>
-            </div>
-        </form>
+       
+        <v-btn class="my-4 darken-2 mx-4 white--text"
+          color="blue" outlined @click="login">Login</v-btn>
+      </form>
     </div>
+  </div>
 </template>
 <script>
-    export default {
-        props : ["nextUrl"],
-        data(){
-            return {
-                name : "",
-                email : "",
-                password : "",
-                password_confirmation : "",
-                is_admin : null
-            }
-        },
-        methods : {
-            handleSubmit(e) {
-                e.preventDefault()
+import { validationMixin } from "vuelidate";
+import { required, maxLength } from "vuelidate/lib/validators";
+import equipment from "@/axios/axios";
 
-                if (this.password === this.password_confirmation && this.password.length > 0)
-                {
-                    let url = "http://localhost:3000/register"
-                    if(this.is_admin != null || this.is_admin == 1) url = "http://localhost:3000/register-admin"
-                    this.$http.post(url, {
-                        name: this.name,
-                        email: this.email,
-                        password: this.password,
-                        is_admin: this.is_admin
-                    })
-                    .then(response => {
-                        localStorage.setItem('user',JSON.stringify(response.data.user))
-                        localStorage.setItem('jwt',response.data.token)
+export default {
+  mixins: [validationMixin],
 
-                        if (localStorage.getItem('jwt') != null){
-                            this.$emit('loggedIn')
-                            if(this.$route.params.nextUrl != null){
-                                this.$router.push(this.$route.params.nextUrl)
-                            }
-                            else{
-                                this.$router.push('/')
-                            }
-                        }
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-                } else {
-                    this.password = ""
-                    this.passwordConfirm = ""
+  validations: {
+    name: { required, maxLength: maxLength(10) },
+    password: { required }
+  },
 
-                    return alert("Passwords do not match")
-                }
-            }
-        }
+  data: () => ({
+    name: "",
+    password: "",
+    showAlert: false,
+    nameE: false,
+    passwordE: false
+  }),
+  methods: {
+    login() {
+      this.$v.$touch();
+      if (!this.$v.name.$invalid && !this.$v.password.$invalid) {
+        let formData = new FormData();
+        formData.append("username", this.name);
+        formData.append("password", this.password);
+        equipment
+          .post("api/SigninServlet", formData)
+          .then(() => {
+            this.$emit("auth", true);
+            this.$router.replace("/homepage");
+          })
+          .catch(() => {
+            alert('Wrong Password')
+          });
+      }
     }
+  }
+};
 </script>
+          
+   
+<style scoped>
+.bg {
+  width: 100vw;
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bg .box {
+  text-align: center;
+  border-radius: 50px;
+  min-width: 500px;
+  width: 800px;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert {
+  position: absolute;
+  bottom: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>
