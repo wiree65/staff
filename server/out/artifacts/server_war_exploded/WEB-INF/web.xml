@@ -36,6 +36,14 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GetStaffServlet</servlet-name>
+        <servlet-class>controller.GetStaffServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetStaffServlet</servlet-name>
+        <url-pattern>/GetStaffServlet</url-pattern>
+    </servlet-mapping>
     <filter>
         <filter-name>CorsFilter</filter-name>
         <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>

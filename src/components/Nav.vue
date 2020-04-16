@@ -7,6 +7,7 @@
       </router-link>
       <v-toolbar-title class="d-flex align-center title1">CS Banking</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn @click="logout">Log out</v-btn>
     </v-app-bar>
 
 
@@ -39,6 +40,7 @@
 </style>
 
 <script>
+  import auth from "../auth";
   export default {
     name: "Nav",
 
@@ -55,6 +57,12 @@
           { text: "Log out", link: "/" }
         ]
       };
+    },
+    methods:{
+      logout(){
+        auth.logout();
+        this.$router.push('/');
+      }
     }
   };
 </script>

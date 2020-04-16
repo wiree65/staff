@@ -6,10 +6,7 @@ import model.QueryModel;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -30,14 +27,20 @@ public class SigninServlet extends HttpServlet {
         try {
             QueryModel q = new QueryModel();
             boolean auth = q.checkPassword(username,password);
-            System.out.println(auth);
+//            System.out.println(auth);
             if(auth){
-                HttpSession session = request.getSession();
-                int staffID = q.getCustomerId(username);
-                String sessionID = session.getId();
+//                HttpSession session = request.getSession();
+                int staffID =q.getCustomerId(username);
+
                 response.setStatus(200);
-                session.setAttribute("staffID",staffID);
+//                session.setAttribute("staffID",staffID);
                 json="success";
+                Cookie userCookie = new Cookie("staffID",""+staffID);
+                        userCookie.setMaxAge(60);
+                response.addCookie(userCookie);
+
+
+
 //                json = "{\"error\":\"User not found\"}";
 //            }else if(auth ){
 //                HttpSession session = request.getSession();

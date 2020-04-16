@@ -5,8 +5,10 @@ import VueRouter from "vue-router";
 import staff from "../views/staff";
 import register from "../views/register";
 import register1 from "../views/Registerr";
-Vue.use(VueRouter);
+// import loginv1 from "../views/loginv1";//
 
+Vue.use(VueRouter);
+// const $auth = false;
 const routes = [
   {
     path: "/homepage",

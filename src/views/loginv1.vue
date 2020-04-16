@@ -27,9 +27,7 @@
           @keypress.enter="login"
         ></v-text-field>
 
-       
-        <v-btn class="my-4 darken-2 mx-4 white--text"
-          color="blue" outlined @click="login">Login</v-btn>
+        <v-btn class="my-4 darken-2 mx-4 white--text" color="blue" outlined @click="login">Login</v-btn>
       </form>
     </div>
   </div>
@@ -37,8 +35,10 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { required, maxLength } from "vuelidate/lib/validators";
-import equipment from "@/axios/axios";
+import axios from "@/axios/axios";
 
+// import Cookie from "js-cookie";
+import auth from "../auth";
 export default {
   mixins: [validationMixin],
 
@@ -54,6 +54,7 @@ export default {
     nameE: false,
     passwordE: false
   }),
+
   methods: {
     login() {
       this.$v.$touch();
@@ -61,14 +62,14 @@ export default {
         let formData = new FormData();
         formData.append("username", this.name);
         formData.append("password", this.password);
-        equipment
-          .post("api/SigninServlet", formData)
-          .then(() => {
-            this.$emit("auth", true);
-            this.$router.replace("/homepage");
+
+        axios
+          .post("api/SigninServlet", formData, {
+            withCredentials: true
           })
-          .catch(() => {
-            alert('Wrong Password')
+          .then(() => {
+            auth.setLogin(true);
+            this.$router.push("/homepage");
           });
       }
     }
