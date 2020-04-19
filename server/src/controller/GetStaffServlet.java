@@ -43,7 +43,7 @@ public class GetStaffServlet extends HttpServlet {
             json +="\"lastname\":"+"\""+lastname+"\",";
             json += "\"id\":"+"\""+id+"\"}";
             PrintWriter out = response.getWriter();
-            System.out.println(json);
+//            System.out.println(json);
             out.print(json);
         }catch(Exception e){
             e.printStackTrace();

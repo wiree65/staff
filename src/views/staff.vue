@@ -83,7 +83,6 @@ export default {
     let login = auth.getLogin();
     console.log(login);
     if(!login.auth){
-      
       this.$router.push('/');
       alert("please login")
     }

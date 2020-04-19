@@ -84,11 +84,18 @@ public class QueryModel {
 
     }
 
-    public void createAccountAndSalary(String username, String password, String salary, String nickname, String name, String lastname, String date_of_birth, String tel, String email, String citizen_id, String sex, String address, String date_of_employed, String branch) throws NoSuchAlgorithmException {
+    public void createAccountAndSalary(String username, String password, String salary, String nickname, String name, String lastname, String date_of_birth, String tel, String email, String citizen_id, String sex, String address, String date_of_employed, String department,String branch) throws NoSuchAlgorithmException {
         String newpassword = username + password;
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         String hashpassword = toHexString(md.digest(newpassword.getBytes(StandardCharsets.UTF_8)));
-        String query = String.format("INSERT INTO staff(username,password,salary,nickname,name,lastname,date_of_birth,tel,email,citizen_id,sex,address,date_of_employed,branch) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')", username, hashpassword, salary, nickname, name, lastname, date_of_birth, tel, email, citizen_id, sex, address, date_of_employed, branch);
+        String query = String.format("INSERT INTO staff(username,password,salary,nickname,name,lastname,date_of_birth,tel,email,citizen_id,sex,address,date_of_employed,department,branch) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')", username, hashpassword, salary, nickname, name, lastname, date_of_birth, tel, email, citizen_id, sex, address, date_of_employed,department, branch);
+        System.out.println(query);
+        executeQuery(query);
+
+    }
+    public void department(String name,String branch) throws NoSuchAlgorithmException {
+        String query = String.format("INSERT INTO staff(name,department) VALUES('%s','%s')", name,branch);
+
         System.out.println(query);
         executeQuery(query);
 
@@ -134,25 +141,24 @@ public class QueryModel {
     }
 
 
-//    public void justDepartment(String branch) throws SQLException {
-//        String query=String.format("INSERT INTO staff(branch) VALUES ('%s')",branch);
-//        System.out.println(query);
-//        preparedStatement = conn.prepareStatement(query);
-//        ResultSet result = preparedStatement.executeQuery();
-//        result.next();
-//        String branch = result.getString("")
-//
-//
-//    }
-    public void createAccountAndbirth(String username,String password,String date_of_birth) throws NoSuchAlgorithmException {
-        String newpassword = username+password;
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        String hashpassword = toHexString(md.digest(newpassword.getBytes(StandardCharsets.UTF_8)));
-        String query = String.format("INSERT INTO staff(username,password,date_of_birth) VALUES('%s','%s','%s')",username,hashpassword,date_of_birth);
+
+    public void justDepartment(String branch,String department) throws SQLException {
+        String query=String.format("INSERT INTO staff(branch,department) VALUES ('%s','%s')",branch,department);
         System.out.println(query);
         executeQuery(query);
 
+
+
     }
+//    public void createAccountAndbirth(String username,String password,String date_of_birth) throws NoSuchAlgorithmException {
+//        String newpassword = username+password;
+//        MessageDigest md = MessageDigest.getInstance("SHA-256");
+//        String hashpassword = toHexString(md.digest(newpassword.getBytes(StandardCharsets.UTF_8)));
+//        String query = String.format("INSERT INTO staff(username,password,date_of_birth) VALUES('%s','%s','%s')",username,hashpassword,date_of_birth);
+//        System.out.println(query);
+//        executeQuery(query);
+//
+//    }
 
     public void createFullAccount(String username,String password,String name,String lastname,String email,String tel,String date_of_birth,String department,String address,String date_of_employed,String date_of_fired,String salary,String branch,String citizen_id,String sex,String nickname) throws NoSuchAlgorithmException {
         String newpassword = username+password;
@@ -163,6 +169,49 @@ public class QueryModel {
         System.out.println(query);
         executeQuery(query);
 
+    }
+    public void insertRequestForm(String form_no,
+                                  String description,String from_date,String to_date,String send_date
+                                 ,String firstname,String lastname,String email
+    ,String phone,String branch,String department) {
+        String query = String.format("INSERT INTO staff_request(form_no, staff_id, description, from_date, to_date, send_date, attach_file, firstname,lastname,email,phone,branch,department) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",form_no,description,from_date,to_date,send_date,firstname,lastname,email,phone,branch,department);
+        System.out.println(query);
+        executeQuery(query);
+
+    }
+    public void insertRequestFormName( String firstname ,String lastname,String email,String phone,String department,String branch,String comment) throws NoSuchAlgorithmException {
+
+        String query = String.format("INSERT INTO staff_request(firstname,lastname,email,phone,department,branch,comment) VALUES('%s','%s','%s','%s','%s','%s','%s')",
+                firstname,lastname,email,phone,department,branch,comment);
+        System.out.println(query);
+        executeQuery(query);
+
+    }
+
+    public ResultSet getAllRequestForm() {
+        try {
+            String query = String.format("SELECT * FROM staff_request");
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ResultSet getRequestFormByid(String id) {
+        try {
+            String query = String.format("SELECT * FROM staff_request WHERE staff_id='%s'",id);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     public String toHexString(byte[] hash)
     {

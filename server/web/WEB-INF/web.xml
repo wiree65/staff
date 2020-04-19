@@ -44,6 +44,18 @@
         <servlet-name>GetStaffServlet</servlet-name>
         <url-pattern>/GetStaffServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>requestServlet</servlet-name>
+        <servlet-class>controller.requestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>requestServlet</servlet-name>
+        <url-pattern>/requestServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
     <filter>
         <filter-name>CorsFilter</filter-name>
         <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>

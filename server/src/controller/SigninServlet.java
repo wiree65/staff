@@ -16,7 +16,6 @@ public class SigninServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         setAccessControlHeaders(response);
-        // Get username and password from req
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -29,11 +28,10 @@ public class SigninServlet extends HttpServlet {
             boolean auth = q.checkPassword(username,password);
 //            System.out.println(auth);
             if(auth){
-//                HttpSession session = request.getSession();
                 int staffID =q.getCustomerId(username);
 
                 response.setStatus(200);
-//                session.setAttribute("staffID",staffID);
+
                 json="success";
                 Cookie userCookie = new Cookie("staffID",""+staffID);
                         userCookie.setMaxAge(60);

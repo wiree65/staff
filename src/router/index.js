@@ -5,6 +5,7 @@ import VueRouter from "vue-router";
 import staff from "../views/staff";
 import register from "../views/register";
 import register1 from "../views/Registerr";
+import allWork from "../views/allWork";
 // import loginv1 from "../views/loginv1";//
 
 Vue.use(VueRouter);
@@ -14,6 +15,11 @@ const routes = [
     path: "/homepage",
     name: "staff",
     component: staff
+  },
+  {
+    path: "/allWork",
+    name: "allWork",
+    component: allWork
   },
   {
     path: "/about",
