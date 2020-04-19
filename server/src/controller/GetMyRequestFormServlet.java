@@ -6,6 +6,7 @@ import model.RequestForm;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,8 +19,8 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-@WebServlet(name = "GetAllRequestFormServlet")
-public class GetAllRequestFormServlet extends HttpServlet {
+@WebServlet(name = "GetMyRequestFormServlet")
+public class GetMyRequestFormServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -32,7 +33,25 @@ public class GetAllRequestFormServlet extends HttpServlet {
 
         try{
             QueryModel q = new QueryModel();
-            ResultSet result = q.getAllRequestForm();
+            Cookie[] cookies = request.getCookies();
+            String cookieName = "staffID";
+            String id ="";
+            if (cookies != null)
+            {
+                for(int i=0; i<cookies.length; i++){
+                    Cookie cookie = cookies[i];
+                    System.out.println(cookies[i].getName());
+                    if (cookieName.equals(cookie.getName()))
+                    {
+                        System.out.print(cookie.getValue());
+                        id = cookie.getValue();
+                    }
+                }
+            }else{
+                System.out.println("ha");
+            }
+            ResultSet result = q.getRequestFormByid(id);
+            System.out.println(result.toString());
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
             while(result.next()){
                 int staff_id = result.getInt("id");
@@ -42,7 +61,7 @@ public class GetAllRequestFormServlet extends HttpServlet {
                 String email= result.getString("email");
                 String department= result.getString("department.name");
                 String branch= result.getString("branch.name");
-                int form_no = result.getInt("form_no");
+                int form_no = result.getInt("form_no");;
                 String topic= result.getString("[ topic]");
                 String description= result.getString("description");
                 String from_date= result.getString("form_date");
@@ -82,3 +101,4 @@ public class GetAllRequestFormServlet extends HttpServlet {
         resp.setHeader("Access-Control-Allow-Methods", "GET");
     }
 }
+
