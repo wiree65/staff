@@ -67,9 +67,13 @@ export default {
           .post("api/SigninServlet", formData, {
             withCredentials: true
           })
-          .then(() => {
+          .then((respond) => {
             auth.setLogin(true);
-            this.$router.push("/homepage");
+            if(respond.data.role=="manager"){
+            this.$router.push("/homepage");}
+            else{
+              this.$router.push("/allWork");
+            }
           });
       }
     }

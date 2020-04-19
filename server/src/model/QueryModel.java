@@ -100,6 +100,23 @@ public class QueryModel {
         executeQuery(query);
 
     }
+//    public boolean isManager(String username,String password) throws SQLException {
+//        String query = String.format("SELECT * FROM staff LEFT JOIN department ON department.id = staff.department" +
+//                " WHERE staff.id = (SELECT id FROM staff)");
+//        ResultSet result = preparedStatement.executeQuery();
+//return (result.getString("staff.id").equals(result.getString("manager_id")));
+//    }
+    public boolean isManager(int id) throws SQLException {
+        String query = String.format("SELECT manager_id from department where manager_id = '%s'", id);
+        ResultSet result = statementQuery(query);
+        int managerId=0;
+        while (result.next()) {
+            managerId = result.getInt("manager_id");
+        }
+        System.out.println("managerID="+managerId);
+        System.out.println(managerId==(id));
+        return managerId==id;
+    }
 
     public int signinUser(String username, String password) throws Exception {
         try {

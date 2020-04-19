@@ -29,36 +29,27 @@ public class SigninServlet extends HttpServlet {
 //            System.out.println(auth);
             if(auth){
                 int staffID =q.getCustomerId(username);
-
+                System.out.println("StaffID"+staffID);
                 response.setStatus(200);
+                if(q.isManager(staffID)){
+                json="{\"role\":\"manager\"}";}
+                else{
+                    json="{\"role\":\"staff\"}";
 
-                json="success";
+                }
+
+
                 Cookie userCookie = new Cookie("staffID",""+staffID);
-                        userCookie.setMaxAge(60);
+                        userCookie.setMaxAge(7200);
                 response.addCookie(userCookie);
 
 
-
-//                json = "{\"error\":\"User not found\"}";
-//            }else if(auth ){
-//                HttpSession session = request.getSession();
-//                String sessionID = session.getId();
-//                int staffID = q.getCustomerId(username);
-//                if(staffID == -1){
-//                    response.setStatus(404);
-//                    json = "{\"error\":\"User not found\"}";
-//                }else{
-//                    response.setStatus(200);
-//                    session.setAttribute("staffID",staffID);
-//                }
-//            }else if(auth == 2){
-//                response.setStatus(404);
-//                json = "{\"error\":\"Password not matched\"}";
             }else{
                 response.setStatus(400);
             }
 
             PrintWriter out = response.getWriter();
+
             out.print(json);
             out.flush();
 
