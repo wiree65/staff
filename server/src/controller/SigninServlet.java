@@ -1,6 +1,5 @@
 package controller;
 
-import model.Encrypt;
 import model.QueryModel;
 
 import javax.servlet.ServletException;
@@ -28,10 +27,11 @@ public class SigninServlet extends HttpServlet {
             boolean auth = q.checkPassword(username,password);
 //            System.out.println(auth);
             if(auth){
-                int staffID =q.getCustomerId(username);
+                int staffID =q.getCustomerId(username); //82
                 System.out.println("StaffID"+staffID);
                 response.setStatus(200);
-                if(q.isManager(staffID)){
+                if(q.isManager(staffID)){ //82
+
                 json="{\"role\":\"manager\"}";}
                 else{
                     json="{\"role\":\"staff\"}";
@@ -40,7 +40,7 @@ public class SigninServlet extends HttpServlet {
 
 
                 Cookie userCookie = new Cookie("staffID",""+staffID);
-                        userCookie.setMaxAge(7200);
+                userCookie.setMaxAge(7200);
                 response.addCookie(userCookie);
 
 

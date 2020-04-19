@@ -74,7 +74,7 @@ export default {
             else{
               this.$router.push("/allWork");
             }
-          });
+          }) .catch(alert("something went wrong"));
       }
     }
   }
