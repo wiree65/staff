@@ -44,7 +44,7 @@
                 </v-col>
                 <v-col xs="3" md="3" style="padding: 0%;">
                     <v-card style="height: 3em;" class="vcardb">
-                        <h3>{{data[0].name}}</h3>
+                        <h3>{{data[0].email}}</h3>
                     </v-card>
                 </v-col>
                 <v-col xs="1" md="1" style="padding: 0%;">

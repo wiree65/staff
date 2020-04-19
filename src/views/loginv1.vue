@@ -72,7 +72,7 @@ export default {
             if(respond.data.role=="manager"){
             this.$router.push("/homepage");}
             else{
-              this.$router.push("/allWork");
+              this.$router.push("/homepage");
             }
           }) .catch(alert("something went wrong"));
       }

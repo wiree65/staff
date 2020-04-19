@@ -7,7 +7,7 @@
 </template>
 <script>
 import axios from "@/axios/axios";
-import Nav from "../components/Nav";
+import Nav from "../../components/Nav";
 export default {
     components: {
       Nav},
@@ -15,6 +15,9 @@ export default {
     const response = await axios.get("/api/Staffs");
     console.log(response.data);
     this.data = response.data;
+    // for(let i=0;i<this.data.length;i++){
+        // const temp
+    // }
     this.information=this.data
   },
 

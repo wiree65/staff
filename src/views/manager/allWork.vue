@@ -7,7 +7,7 @@
 </template>
 <script>
 import axios from "@/axios/axios";
-import Nav from "../components/Nav";
+import Nav from "../../components/Nav";
 export default {
     components: {
       Nav},

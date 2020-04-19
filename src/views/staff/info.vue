@@ -16,7 +16,7 @@
             <v-row style="align-items: center;display:flex;">
 
               <v-col xs="4" md="4" class="col1">
-                <img src="../assets/Ellipse 7.png" style="height: 150px;" />
+                <img src="../../assets/Ellipse 7.png" style="height: 150px;" />
               </v-col>
 
               <v-col xs="7" md="7" class="col1">
@@ -95,7 +95,7 @@
         <v-tab-item>
           <v-card flat>
             <v-card-text>
-              <test />
+              <test/>
 
               <!-- ------------------info--------------------- -->
             </v-card-text>
@@ -108,9 +108,9 @@
 </template>
 
 <script>
-  import Nav from "../components/Nav";
-  import test from "../views/sthOfStaff/test";
-  import personInfo from "../views/sthOfStaff/personInfo";
+  import Nav from "../../components/Nav";
+  import test from "../../views/sthOfStaff/address";
+  import personInfo from "../../views/sthOfStaff/personInfo";
   export default {
     components: {
       Nav,

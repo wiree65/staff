@@ -13,7 +13,7 @@
                 </v-col>
                 <v-col xs="7" md="7">
                     <v-card style="height: 7em;" class="vcardb">
-                        <h3>{{data[0].name}}</h3>
+                        <h3>{{data[0].address}}</h3>
                     </v-card>
                 </v-col>
                 
@@ -31,7 +31,7 @@
                 </v-col>
                 <v-col xs="7" md="7">
                     <v-card style="height: 7em;" class="vcardb">
-                        <h3>{{data[0].name}}</h3>
+                        <h3>{{data[0].address}}</h3>
                     </v-card>
                 </v-col>
                 

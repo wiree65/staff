@@ -245,7 +245,7 @@
   </div>
 </template>
 <script>
-import Nav from "../components/Nav";
+import Nav from "../../components/Nav";
 import equipment from "@/axios/axios";
 export default {
   components: {

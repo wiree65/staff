@@ -128,7 +128,7 @@ public class QueryModel {
     }
 
 
-    public void insertRequestFormName( String firstname ,String lastname,String email,String phone,String department,String branch,String comment) throws NoSuchAlgorithmException {
+    public void insertRequestFormName(String firstname ,String lastname,String email,String phone,String department,String branch,String comment) throws NoSuchAlgorithmException {
 
         String query = String.format("INSERT INTO staff_request(firstname,lastname,email,phone,department,branch,comment) VALUES('%s','%s','%s','%s','%s','%s','%s')",
                 firstname,lastname,email,phone,department,branch,comment);

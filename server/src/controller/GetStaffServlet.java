@@ -34,6 +34,7 @@ public class GetStaffServlet extends HttpServlet {
             String json = "{";
             String name = "";
             String lastname = "";
+            String email = "";
             while(result.next()){
                 name =result.getString("name");
                 lastname =result.getString("lastname");
@@ -41,6 +42,7 @@ public class GetStaffServlet extends HttpServlet {
             }
             json +="\"name\":"+"\""+name+"\",";
             json +="\"lastname\":"+"\""+lastname+"\",";
+            json +="\"email\":"+"\""+email+"\",";
             json += "\"id\":"+"\""+id+"\"}";
             PrintWriter out = response.getWriter();
 //            System.out.println(json);
