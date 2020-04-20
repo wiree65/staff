@@ -136,10 +136,16 @@ public class QueryModel {
         executeQuery(query);
 
     }
+    public void insertRequestForm(String form_no,String staff_id,String topic,String description,String from_date,String to_date,String send_date,String attach_file,String return_date,String comment){
+        String query = String.format("INSERT INTO staff_request(form_no,staff_id,topic,description,from_date,to_date,send_date,attach_file,return_date,comment) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
+                form_no,staff_id,topic,description,from_date,to_date,send_date,attach_file,return_date,comment);
+        System.out.println(query);
+        executeQuery(query);
+    }
 
     public ResultSet getAllRequestForm() {
         try {
-            String query = String.format("SELECT * FROM staff_request");
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.[ topic],staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.[return_date ] from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.[staff_id ]");
             System.out.println(query);
             preparedStatement = conn.prepareStatement(query);
             ResultSet result = preparedStatement.executeQuery();
@@ -152,7 +158,7 @@ public class QueryModel {
 
     public ResultSet getRequestFormByid(String id) {
         try {
-            String query = String.format("SELECT * FROM staff_request WHERE staff_id='%s'",id);
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.[ topic],staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.[return_date ] from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.[staff_id ] WHERE staff.id = '%s'",id);
             System.out.println(query);
             preparedStatement = conn.prepareStatement(query);
             ResultSet result = preparedStatement.executeQuery();

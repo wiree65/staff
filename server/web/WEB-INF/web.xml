@@ -12,14 +12,7 @@
         <servlet-name>Staffs</servlet-name>
         <url-pattern>/Staffs</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>controller.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
-    </servlet-mapping>
+
     <servlet>
         <servlet-name>SigninServlet</servlet-name>
         <servlet-class>controller.SigninServlet</servlet-class>
@@ -51,6 +44,22 @@
     <servlet-mapping>
         <servlet-name>requestServlet</servlet-name>
         <url-pattern>/requestServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetMyRequestFormServlet</servlet-name>
+        <servlet-class>controller.GetMyRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetMyRequestFormServlet</servlet-name>
+        <url-pattern>/GetMyRequestFormServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetAllRequestFormServlet</servlet-name>
+        <servlet-class>controller.GetAllRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAllRequestFormServlet</servlet-name>
+        <url-pattern>/GetAllRequestFormServlet</url-pattern>
     </servlet-mapping>
 
 
