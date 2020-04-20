@@ -22,17 +22,17 @@ import java.util.ArrayList;
 @WebServlet(name = "GetMyRequestFormServlet")
 public class GetMyRequestFormServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         setAccessControlHeaders(response);
 
         try{
-            QueryModel q = new QueryModel();
+
             Cookie[] cookies = request.getCookies();
             String cookieName = "staffID";
             String id ="";
@@ -50,6 +50,7 @@ public class GetMyRequestFormServlet extends HttpServlet {
             }else{
                 System.out.println("ha");
             }
+            QueryModel q = new QueryModel();
             ResultSet result = q.getRequestFormByid(id);
             System.out.println(result.toString());
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
@@ -61,8 +62,8 @@ public class GetMyRequestFormServlet extends HttpServlet {
                 String email= result.getString("email");
                 String department= result.getString("department.name");
                 String branch= result.getString("branch.name");
-                int form_no = result.getInt("form_no");;
-                String topic= result.getString("[ topic]");
+                int form_no = result.getInt("form_no");
+                String topic= result.getString("topic");
                 String description= result.getString("description");
                 String from_date= result.getString("form_date");
                 String to_date= result.getString("to_date");
@@ -70,7 +71,7 @@ public class GetMyRequestFormServlet extends HttpServlet {
                 String attach_file= result.getString("attach_file");
                 String comment= result.getString("comment");
                 String status= result.getString("status");
-                String return_date= result.getString("[return_date ]");
+                String return_date= result.getString("return_date");
 
                 RequestForm requestform = new RequestForm(staff_id,name,lastname,tel,email,department,branch, form_no,topic,description,from_date, to_date, send_date,attach_file,comment,status, return_date);
                 b.add(requestform);
