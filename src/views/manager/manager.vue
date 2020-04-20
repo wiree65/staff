@@ -17,13 +17,13 @@
                   <h1 class="center">MANAGER</h1>
                 </v-col>
                 <v-col>
-                  <!-- <h4 class="center">Name:{{this.info.name}}</h4>
+                  <h4 class="center">Name:{{this.info.name}}</h4>
                 </v-col>
                 <v-col>
                   <h4 class="center">Lastname: {{this.info.lastname}}</h4>
                 </v-col>
                 <v-col>
-                  <h4 class="center">Staff ID: {{this.info.id}}</h4>-->
+                  <h4 class="center">Staff ID: {{this.info.id}}</h4>
                 </v-col>
               </v-col>
             </v-row>
@@ -32,7 +32,7 @@
         <!-- align-items: center; -->
         <!-- justify-content: center; -->
         <v-col cols="6">
-          <v-container class="con1" style="display:grid;">
+          <v-container class="con1" style="display:grid;padding:0px">
             <v-col>
               <router-link to="/info">
                 <v-btn large color="#1976D2" style="width: 90%;;margin-left: 5%;">
@@ -46,12 +46,19 @@
               </v-btn>
             </v-col>
             <v-col>
-              <router-link to="/request" style="text-decoration: none;">
+              <router-link to="/register" style="text-decoration: none;">
                 <v-btn large color="#42A5F5" style="width: 90%;margin-left: 5%;">
                   <p style="color: white;font-size: 150%;margin-bottom: 0px;">Register</p>
                 </v-btn>
               </router-link>
             </v-col>
+            <v-col>
+            <router-link to="/allWork" style="text-decoration: none;">
+              <v-btn large color="#64B5F6" style="width: 90%;margin-left: 5%;">
+                <p style="color: white;font-size: 150%;margin-bottom: 0px;">Access History</p>
+              </v-btn>
+            </router-link>
+          </v-col>
             <v-col>
               <router-link to="/about" style="text-decoration: none;">
                 <v-btn large color="#64B5F6" style="width: 90%;margin-left: 5%;">
@@ -67,8 +74,8 @@
 </template>
 
 <script>
-// import auth from "../auth";
-import Nav from "../../components/Nav";
+import auth from "../../auth";
+import Nav from "../../components/NavForM";
 import Carousel from "../../components/Carousel";
 import axios from "@/axios/axios";
 export default {
@@ -79,14 +86,14 @@ export default {
   data() {
     return { info: null };
   },
-  // created(){
-  //   let login = auth.getLogin();
-  //   console.log(login);
-  //   if(!login.auth){
-  //     this.$router.push('/');
-  //     alert("please login")
-  //   }
-  // },
+  created(){
+    let login = auth.getLogin();
+    console.log(login);
+    if(!login.auth){
+      this.$router.push('/');
+      alert("please login")
+    }
+  },
   mounted() {
     console.log(this.$auth);
     axios

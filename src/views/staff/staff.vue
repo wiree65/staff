@@ -17,13 +17,13 @@
                   <h1 class="center">STAFF</h1>
                 </v-col>
                 <v-col>
-                  <!-- <h4 class="center">Name:{{this.info.name}}</h4>
+                  <h4 class="center">Name:{{this.info.name}}</h4>
                 </v-col>
                 <v-col>
                   <h4 class="center">Lastname: {{this.info.lastname}}</h4>
                 </v-col>
                 <v-col>
-                  <h4 class="center">Staff ID: {{this.info.id}}</h4> -->
+                  <h4 class="center">Staff ID: {{this.info.id}}</h4>
                 </v-col>
               </v-col>
             </v-row>
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-// import auth from "../auth";
+import auth from "../../auth";
 import Nav from "../../components/Nav";
 import Carousel from "../../components/Carousel";
 import axios from "@/axios/axios";
@@ -86,14 +86,14 @@ export default {
   data() {
     return { info: null };
   },
-  // created(){
-  //   let login = auth.getLogin();
-  //   console.log(login);
-  //   if(!login.auth){
-  //     this.$router.push('/');
-  //     alert("please login")
-  //   }
-  // },
+  created(){
+    let login = auth.getLogin();
+    console.log(login);
+    if(!login.auth){
+      this.$router.push('/');
+      alert("please login")
+    }
+  },
   mounted() {
     console.log(this.$auth);    
     axios
