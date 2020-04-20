@@ -41,6 +41,18 @@ public class QueryModel {
         }
         return null;
     }
+    public ResultSet getStaffFromId(String id){
+
+        try {
+            String query = String.format("SELECT staff.id,staff.username,staff.name,staff.lastname,staff.email,staff.tel,staff.date_of_birth,department.name,branch.name,staff.address,staff.date_of_employed,staff.salary,staff.created_at,staff.update_at,staff.citizen_id,staff.sex,staff.nickname from staff INNER JOIN  department  on staff.department  = department.id INNER JOIN branch on staff.branch = branch.id where staff.id = '%s'",id);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public ResultSet statementQuery(String query) {
         try {
