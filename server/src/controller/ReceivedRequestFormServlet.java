@@ -19,8 +19,8 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-@WebServlet(name = "GetMyRequestFormServlet")
-public class GetMyRequestFormServlet extends HttpServlet {
+@WebServlet(name = "ReceivedRequestFormServlett")
+public class ReceivedRequestFormServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,7 +43,7 @@ public class GetMyRequestFormServlet extends HttpServlet {
                 }
             }
             System.out.println("id=" + id);
-            ResultSet result = q.getRequestFormByid(id);
+            ResultSet result = q.getRequestFormBySendTo(q.getDepartmentFromId(id));
             System.out.println(result.toString());
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
             while (result.next()) {
