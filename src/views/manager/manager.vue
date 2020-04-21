@@ -34,16 +34,18 @@
         <v-col cols="6">
           <v-container class="con1" style="display:grid;padding:0px">
             <v-col>
-              <router-link to="/info">
+              <router-link to="/info1">
                 <v-btn large color="#1976D2" style="width: 90%;;margin-left: 5%;">
                   <p style="color: white;font-size:150%;margin-bottom: 0px;">Personal Info & Status</p>
                 </v-btn>
               </router-link>
             </v-col>
             <v-col>
+              <router-link to="/approve" style="text-decoration: none;">
               <v-btn large color="#1E88E5" style="width: 90%;;margin-left: 5%;">
                 <p style="color: white;font-size: 150%;margin-bottom: 0px;">Approve request</p>
               </v-btn>
+               </router-link>
             </v-col>
             <v-col>
               <router-link to="/register" style="text-decoration: none;">
@@ -60,7 +62,7 @@
             </router-link>
           </v-col>
             <v-col>
-              <router-link to="/about" style="text-decoration: none;">
+              <router-link to="/calendar" style="text-decoration: none;">
                 <v-btn large color="#64B5F6" style="width: 90%;margin-left: 5%;">
                   <p style="color: white;font-size: 150%;margin-bottom: 0px;">Calendar</p>
                 </v-btn>
@@ -95,14 +97,15 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$auth);
+    // console.log(this.$auth);    
     axios
-      .post("api/GetStaffServlet", null, {
-        withCredentials: true
-      })
-      .then(response => {
-        this.info = response.data;
-      });
+          .get("api/GetStaffServlet", {
+            withCredentials: true
+          })
+          .then((response) => {
+            console.log(response.data)
+            this.info =response.data;
+          });
   }
 };
 </script>

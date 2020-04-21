@@ -156,8 +156,8 @@ public class QueryModel {
 
     public ResultSet getRequestFormByid(String id) {
         try {
-            String query = String.format("SELECT DISTINCT staff.id,staff.name,staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff.id = '%s'",id);
-//            System.out.println(query);
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date,staff_request.send_to from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff.id = '%s'",id);
+            System.out.println(query);
             preparedStatement = conn.prepareStatement(query);
             ResultSet result = preparedStatement.executeQuery();
             return result;
@@ -182,7 +182,48 @@ public class QueryModel {
 
         return hexString.toString();
     }
+    public ResultSet getRequestFormBySendTo(String department) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date,staff_request.send_to from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff_request.send_to = '%s'",department);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
+    public String getDepartmentFromId(String id){
+        try {
+            String query = String.format("select department from staff where id ='%s'",id);
+
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            String staffDepartment="";
+            while (result.next()) {
+                String department = ""+result.getInt("department");
+                staffDepartment = department;
+            }
+            return staffDepartment;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+     public ResultSet getStaffFromId(String id){
+        try {
+            String query = String.format("SELECT staff.id,staff.username,staff.name,staff.lastname,staff.email,staff.tel,staff.date_of_birth,department.name,branch.name,staff.address,staff.date_of_employed,staff.salary,staff.created_at,staff.update_at,staff.citizen_id,staff.sex,staff.nickname from staff INNER JOIN  department  on staff.department  = department.id INNER JOIN branch on staff.branch = branch.id where staff.id = '%s'",id);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 

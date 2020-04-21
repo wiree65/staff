@@ -18,14 +18,14 @@
                 <v-container class="con3" style="background-color: white;">
                   <v-row>
                     <v-col>
-                      <h4 class="h4">Staff ID: {{this.info.id}}</h4>
+                      <h4 class="h4">Manager ID: {{this.info.id}}</h4>
                       <br />
                       <h4 class="h4">Name :{{this.info.name}}</h4>
                     </v-col>
                     <v-col>
                       <h4>Status: Working</h4>
                       <br />
-                      <h4>Position: Staff</h4>
+                      <h4>Position: Manager</h4>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -75,13 +75,14 @@
       </v-tabs-items>
     </v-container>
   </div>
+
 </template>
 
 <script>
-import Nav from "../../components/Nav";
 import auth from "../../auth";
-import test from "../../views/sthOfStaff/address";
-import personInfo from "../../views/sthOfStaff/personInfo";
+import Nav from "../../components/NavForM";
+import test from "./sthOfManager/address";
+import personInfo from "./sthOfManager/personInfo";
 import axios from "@/axios/axios";
 export default {
   components: {

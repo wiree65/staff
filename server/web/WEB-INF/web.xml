@@ -54,6 +54,25 @@
         <url-pattern>/GetMyRequestFormServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>PersonalInfoServlet</servlet-name>
+        <servlet-class>controller.PersonalInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PersonalInfoServlet</servlet-name>
+        <url-pattern>/PersonalInfoServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReceivedRequestFormServlet</servlet-name>
+        <servlet-class>controller.ReceivedRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReceivedRequestFormServlet</servlet-name>
+        <url-pattern>/ReceivedRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+
 
 
 

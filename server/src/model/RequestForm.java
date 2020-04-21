@@ -18,8 +18,17 @@ public class RequestForm {
     String comment;
     String status;
     String return_date;
+    String send_to;
 
-    public RequestForm(int staff_id, String name, String lastname, String tel, String email, String department, String branch, int form_no, String topic, String description, String from_date, String to_date, String send_date, String attach_file, String comment, String status, String return_date) {
+    public String getSend_to() {
+        return send_to;
+    }
+
+    public void setSend_to(String send_to) {
+        this.send_to = send_to;
+    }
+
+    public RequestForm(int staff_id, String name, String lastname, String tel, String email, String department, String branch, int form_no, String topic, String description, String from_date, String to_date, String send_date, String attach_file, String comment, String status, String return_date,String send_to) {
         this.staff_id = staff_id;
         this.name = name;
         this.lastname = lastname;
@@ -37,6 +46,7 @@ public class RequestForm {
         this.comment = comment;
         this.status = status;
         this.return_date = return_date;
+        this.send_to=send_to;
     }
 
     public int getStaff_id() {

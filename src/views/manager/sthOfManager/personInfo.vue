@@ -128,7 +128,7 @@
 }
 </style>
 <script>
-import auth from "../../auth";
+import auth from "../../../auth";
 import equipment from "@/axios/axios";
 export default {
   data() {

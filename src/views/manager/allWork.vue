@@ -25,15 +25,15 @@ export default {
     ],
     headers: [
       {
-        text: "firstname",
+        text: "id",
         align: "lastname",
         sortable: false,
-        value: "name"
+        value: "id"
       },
       { text: "firstname", value: "name" },
       { text: "lastname", value: "lastname" },
       { text: "id", value: "id" },
-      { text: "branch", value: "branch" },
+      { text: "date of employed", value: "date_of_employed" },
       { text: "salary", value: "salary" }
     ]
   })

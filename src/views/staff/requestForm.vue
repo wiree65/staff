@@ -1,39 +1,19 @@
 <template>
   <div>
     <Nav />
-
-
-
-
-
-    <!-- ----------------------------staff info---------------------------------------- -->
-    <!-- 42A5F5 -->
-
     <v-container style="padding: 0%;" >
-
-
       <v-container style="padding: 0%;">
-
         <v-row>
           <v-col xs="2" md="2">
-
           </v-col>
-
           <v-col>
             <v-tabs v-model="tabs">
               <v-tab>Your Request</v-tab>
               <v-tab>Request</v-tab>
             </v-tabs>
           </v-col>
-
         </v-row>
-
       </v-container>
-
-
-
-
-
       <v-tabs-items v-model="tabs">
         <v-tab-item>
           <v-card flat>

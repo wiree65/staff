@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 
 @WebServlet(name = "GetStaffServlet")
 public class GetStaffServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         setAccessControlHeaders(response);
@@ -30,6 +30,7 @@ public class GetStaffServlet extends HttpServlet {
                     }
                 }
             }
+            System.out.println("staffid="+id);
             ResultSet result = q.getStaffFromName(id);
             String json = "{";
             String name = "";
@@ -38,7 +39,6 @@ public class GetStaffServlet extends HttpServlet {
             while(result.next()){
                 name =result.getString("name");
                 lastname =result.getString("lastname");
-
             }
             json +="\"name\":"+"\""+name+"\",";
             json +="\"lastname\":"+"\""+lastname+"\",";
@@ -46,13 +46,14 @@ public class GetStaffServlet extends HttpServlet {
             json += "\"id\":"+"\""+id+"\"}";
             PrintWriter out = response.getWriter();
 //            System.out.println(json);
+//            System.out.print(json);
             out.print(json);
         }catch(Exception e){
             e.printStackTrace();
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }private void setAccessControlHeaders(HttpServletResponse resp) {
 //            resp.setHeader("Access-Control-Allow-Origin", "http://192.168.0.102:8081");

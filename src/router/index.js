@@ -6,7 +6,9 @@ import allWork from "../views/manager/allWork";
 import manager from "../views/manager/manager";
 import getRequest from "../views/staff/getRQ/getRequest";
 import requestForm from "../views/staff/requestForm";
-
+import approve from "../views/manager/approve";
+import calendar from "../views/staff/calendar";
+import info1 from "../views/manager/info";
 // import loginv1 from "../views/loginv1";//
 
 Vue.use(VueRouter);
@@ -56,6 +58,18 @@ const routes = [
     path: "/requestForm",
     name: "requestForm",
     component: requestForm
+  }, {
+    path: "/approve",
+    name: "approve",
+    component: approve
+  },{
+    path: "/calendar",
+    name: "calendar",
+    component: calendar
+  },{
+    path: "/info1",
+    name: "info1",
+    component: info1
   }
  
 ];

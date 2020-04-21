@@ -16,10 +16,11 @@
         </v-col>
       </v-row>
     </v-container>
+   
   </div>
 </template>
 <script>
-import auth from "../../auth";
+import auth from "../../../auth";
 
 import equipment from "@/axios/axios";
 export default {
