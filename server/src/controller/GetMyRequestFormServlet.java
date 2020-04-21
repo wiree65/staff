@@ -31,55 +31,48 @@ public class GetMyRequestFormServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         setAccessControlHeaders(response);
 
-        try{
+        try {
             QueryModel q = new QueryModel();
-            Cookie[] cookies = request.getCookies();
-            String cookieName = "staffID";
-            String id ="";
-            if (cookies != null)
-            {
-                for(int i=0; i<cookies.length; i++){
-                    Cookie cookie = cookies[i];
-                    System.out.println(cookies[i].getName());
-                    if (cookieName.equals(cookie.getName()))
-                    {
-                        System.out.print(cookie.getValue());
-                        id = cookie.getValue();
+            Cookie[] c = request.getCookies();
+            String id = "";
+            if(c!=null){
+                for(int i = 0 ;i<c.length;i++){
+                    if(c[i].getName().equals("staffID")){
+                        id = c[i].getValue();
                     }
                 }
-            }else{
-                System.out.println("ha");
             }
+            System.out.println("id=" + id);
             ResultSet result = q.getRequestFormByid(id);
             System.out.println(result.toString());
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
-            while(result.next()){
+            while (result.next()) {
                 int staff_id = result.getInt("id");
-                String name = result.getString("staff.name");
-                String lastname= result.getString("lastname");
-                String tel= result.getString("tel");
-                String email= result.getString("email");
-                String department= result.getString("department.name");
-                String branch= result.getString("branch.name");
-                int form_no = result.getInt("form_no");;
-                String topic= result.getString("[ topic]");
-                String description= result.getString("description");
-                String from_date= result.getString("form_date");
-                String to_date= result.getString("to_date");
-                String send_date= result.getString("send_date");
-                String attach_file= result.getString("attach_file");
-                String comment= result.getString("comment");
-                String status= result.getString("status");
-                String return_date= result.getString("[return_date ]");
+                String name = result.getString("name");
+                String lastname = result.getString("lastname");
+                String tel = result.getString("tel");
+                String email = result.getString("email");
+                String department = result.getString("name");
+                String branch = result.getString("name");
+                int form_no = result.getInt("form_no");
+                String topic = result.getString("topic");
+                String description = result.getString("description");
+                String from_date = result.getString("from_date");
+                String to_date = result.getString("to_date");
+                String send_date = result.getString("send_date");
+                String attach_file = result.getString("attach_file");
+                String comment = result.getString("comment");
+                String status = result.getString("status");
+                String return_date = result.getString("return_date");
 
-                RequestForm requestform = new RequestForm(staff_id,name,lastname,tel,email,department,branch, form_no,topic,description,from_date, to_date, send_date,attach_file,comment,status, return_date);
+                RequestForm requestform = new RequestForm(staff_id, name, lastname, tel, email, department, branch, form_no, topic, description, from_date, to_date, send_date, attach_file, comment, status, return_date);
                 b.add(requestform);
             }
             Gson gson = new Gson();
             PrintWriter out = response.getWriter();
             int index = 0;
             out.print("[\n");
-            for(RequestForm temp:b) {
+            for (RequestForm temp : b) {
                 String jsonData = gson.toJson(temp);
                 out.println(jsonData);
                 index++;
@@ -87,18 +80,22 @@ public class GetMyRequestFormServlet extends HttpServlet {
                     out.print(",");
                 }
                 out.println("\n");
-
+                System.out.println(jsonData);
             }
             out.print("]\n");
-        }
-        catch(Exception e){
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
+
     }
+
     private void setAccessControlHeaders(HttpServletResponse resp) {
         resp.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
-        resp.setHeader("Access-Control-Allow-Methods", "GET");
+        resp.setHeader("Access-Control-Allow-Methods", "GET, POST");
+        resp.setHeader("Access-Control-Allow-Credentials", "true");
+        resp.setHeader("Access-Control-Allow-Headers", "*");
     }
 }
-

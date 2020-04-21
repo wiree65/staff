@@ -28,7 +28,7 @@ public class SigninServlet extends HttpServlet {
 //            System.out.println(auth);
             if(auth){
                 int staffID =q.getCustomerId(username); //82
-                System.out.println("StaffID"+staffID);
+//                System.out.println("StaffID"+staffID);
                 response.setStatus(200);
                 if(q.isManager(staffID)){ //82
 

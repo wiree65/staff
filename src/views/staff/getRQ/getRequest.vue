@@ -1,23 +1,32 @@
 <template>
   <div >
-    <h1 style="padding:12px">ACCESS HISTORY</h1>
-    <Nav/>
+
+ 
     <v-data-table dense :headers="headers" :items="information" item-key="name" class="elevation-1"></v-data-table>
   </div>
+
 </template>
+
 <script>
+
 import axios from "@/axios/axios";
-import Nav from "../../components/Nav";
+
 export default {
     components: {
-      Nav},
+    },
+//  created(){
+//     let login = auth.getLogin();
+//     console.log(login);
+//     if(!login.auth){
+//       this.$router.push('/');
+//       alert("please login")
+//     }
+//   },
   async mounted() {
-    const response = await axios.get("/api/Staffs");
+    const response = await axios.get("/api/GetMyRequestFormServlet",{  withCredentials: true});
     console.log(response.data);
     this.data = response.data;
-    // for(let i=0;i<this.data.length;i++){
-        // const temp
-    // }
+  
     this.information=this.data
   },
 
@@ -28,16 +37,16 @@ export default {
     ],
     headers: [
       {
-        text: "firstname",
+        text: "id",
         align: "lastname",
         sortable: false,
-        value: "name"
+        value: "staff_id"
       },
       { text: "firstname", value: "name" },
       { text: "lastname", value: "lastname" },
-      { text: "id", value: "id" },
-      { text: "branch", value: "branch" },
-      { text: "salary", value: "salary" }
+      { text: "topic", value: "topic" },
+      { text: "description", value: "description" },
+      { text: "status", value: "status" }
     ]
   })
 };

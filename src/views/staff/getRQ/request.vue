@@ -1,12 +1,11 @@
 <template>
   <div>
-    <Nav />
+
     <!-- //////////////request form/////////////// -->
-    <br />
-    <h1 class="text-center">Request Form</h1>
-    <br />
+  
+    
     <div>
-      <v-card class="pa-md-4 mx-lg-auto" color="white" width="50%">
+      <v-card class="pa-md-4 mx-lg-auto" color="white" width="70%">
         <v-card-text>
           <v-form v-model="valid">
             <v-container>
@@ -233,12 +232,10 @@
   </div>
 </template>
 <script>
-import Nav from "../../components/Nav";
+
 import axios from "@/axios/axios";
 export default {
-  components: {
-    Nav
-  },
+  
   //Name & Lastname Required
   data: () => ({
     valid: false,

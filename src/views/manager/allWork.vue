@@ -14,10 +14,7 @@ export default {
   async mounted() {
     const response = await axios.get("/api/Staffs");
     console.log(response.data);
-    this.data = response.data;
-    // for(let i=0;i<this.data.length;i++){
-        // const temp
-    // }
+    this.data = response.data;  
     this.information=this.data
   },
 

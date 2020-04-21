@@ -53,14 +53,6 @@
         <servlet-name>GetMyRequestFormServlet</servlet-name>
         <url-pattern>/GetMyRequestFormServlet</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>GetAllRequestFormServlet</servlet-name>
-        <servlet-class>controller.GetAllRequestFormServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetAllRequestFormServlet</servlet-name>
-        <url-pattern>/GetAllRequestFormServlet</url-pattern>
-    </servlet-mapping>
 
 
 
