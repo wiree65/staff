@@ -82,6 +82,30 @@ public class QueryModel {
         }
         return null;
     }
+    public ResultSet getApprovedRequestFormBySendTo(String department) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date,staff_request.send_to from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff_request.send_to = '%s' AND status = 'Approved'",department);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ResultSet getWaitingRequestFormBySendTo(String department) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date,staff_request.send_to from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff_request.send_to = '%s' AND status = 'Waiting'",department);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public void approveRequestFormByFormNO(String comment,String status,String form_no){
         String query = String.format("UPDATE staff_request SET comment = '%s', status = '%s' WHERE form_no = '%s'",comment,status,form_no);
         System.out.println(query);
@@ -228,7 +252,4 @@ public class QueryModel {
 
         return hexString.toString();
     }
-
-
-
 }
