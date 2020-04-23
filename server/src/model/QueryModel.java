@@ -107,7 +107,7 @@ public class QueryModel {
         return null;
     }
     public void approveRequestFormByFormNO(String comment,String status,String form_no){
-        String query = String.format("UPDATE staff_request SET comment = '%s', status = '%s' WHERE form_no = '%s'",comment,status,form_no);
+        String query = String.format("UPDATE staff_request SET comment = '%s', status = '%s',return_date = GETDATE() WHERE form_no = '%s'",comment,status,form_no);
         System.out.println(query);
         executeQuery(query);
     }
