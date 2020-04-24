@@ -6,6 +6,7 @@ import staff from "../views/staff";
 import register from "../views/register";
 import register1 from "../views/Registerr";
 import allWork from "../views/allWork";
+import designLogin from "../views/designLogin";
 // import loginv1 from "../views/loginv1";//
 
 Vue.use(VueRouter);
@@ -56,6 +57,10 @@ const routes = [
     path: "/register1",
     name: "register1",
     component: register1
+  }, {
+    path: "/designLogin",
+    name: "designLogin",
+    component: designLogin
   }
  
 ];
