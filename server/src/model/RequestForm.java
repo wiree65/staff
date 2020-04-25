@@ -20,6 +20,7 @@ public class RequestForm {
     String return_date;
     String send_to;
 
+<<<<<<< HEAD
     public String getSend_to() {
         return send_to;
     }
@@ -28,6 +29,8 @@ public class RequestForm {
         this.send_to = send_to;
     }
 
+=======
+>>>>>>> BackEndBranchere
     public RequestForm(int staff_id, String name, String lastname, String tel, String email, String department, String branch, int form_no, String topic, String description, String from_date, String to_date, String send_date, String attach_file, String comment, String status, String return_date,String send_to) {
         this.staff_id = staff_id;
         this.name = name;
@@ -46,7 +49,19 @@ public class RequestForm {
         this.comment = comment;
         this.status = status;
         this.return_date = return_date;
+<<<<<<< HEAD
         this.send_to=send_to;
+=======
+        this.send_to = send_to;
+    }
+
+    public String getSend_to() {
+        return send_to;
+    }
+
+    public void setSend_to(String send_to) {
+        this.send_to = send_to;
+>>>>>>> BackEndBranchere
     }
 
     public int getStaff_id() {

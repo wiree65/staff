@@ -12,15 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-@WebServlet(name = "GetMyRequestFormServlet")
-public class GetMyRequestFormServlet extends HttpServlet {
+@WebServlet(name = "ApprovedReceivedRequestFormServlet")
+public class ApprovedReceivedRequestFormServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,7 +39,7 @@ public class GetMyRequestFormServlet extends HttpServlet {
                 }
             }
             System.out.println("id=" + id);
-            ResultSet result = q.getRequestFormByid(id);
+            ResultSet result = q.getApprovedRequestFormBySendTo(q.getDepartmentFromId(id));
             System.out.println(result.toString());
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
             while (result.next()) {
@@ -65,12 +61,8 @@ public class GetMyRequestFormServlet extends HttpServlet {
                 String status = result.getString("status");
                 String return_date = result.getString("return_date");
                 String send_to = result.getString("send_to");
-<<<<<<< HEAD
-                RequestForm requestform = new RequestForm(staff_id, name, lastname, tel, email, department, branch, form_no, topic, description, from_date, to_date, send_date, attach_file, comment, status, return_date,send_to);
-=======
 
                 RequestForm requestform = new RequestForm(staff_id, name, lastname, tel, email, department, branch, form_no, topic, description, from_date, to_date, send_date, attach_file, comment, status, return_date, send_to);
->>>>>>> BackEndBranchere
                 b.add(requestform);
             }
             Gson gson = new Gson();

@@ -1,6 +1,9 @@
 package model;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> BackEndBranchere
 public class StaffInfo {
     int id;
     String username;
@@ -176,4 +179,7 @@ public class StaffInfo {
         this.nickname = nickname;
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> BackEndBranchere
