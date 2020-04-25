@@ -41,7 +41,7 @@
               </router-link>
             </v-col>
             <v-col>
-              <router-link to="/approve" style="text-decoration: none;">
+              <router-link to="/getRequestStaff" style="text-decoration: none;">
               <v-btn large color="#1E88E5" style="width: 90%;;margin-left: 5%;">
                 <p style="color: white;font-size: 150%;margin-bottom: 0px;">Approve request</p>
               </v-btn>

@@ -72,6 +72,16 @@
         <url-pattern>/ReceivedRequestFormServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>WaitingReceivedRequestFormServlet</servlet-name>
+        <servlet-class>controller.WaitingReceivedRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WaitingReceivedRequestFormServlet</servlet-name>
+        <url-pattern>/WaitingReceivedRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+
 
 
 

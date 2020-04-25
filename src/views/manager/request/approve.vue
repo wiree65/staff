@@ -1,7 +1,7 @@
 <template>
   <div>
     <template>
-      <Nav />
+  
       
       <v-data-table :headers="headers" :items="information" class="elevation-1">
         <template v-slot:top>
@@ -51,13 +51,13 @@
 
 <script>
 import axios from "@/axios/axios";
-import Nav from "../../components/NavForM";
+
 export default {
   components: {
-    Nav
+ 
   },
   async mounted() {
-    const response = await axios.get("/api/ReceivedRequestFormServlet", {
+    const response = await axios.get("/api/WaitingReceivedRequestFormServlet", {
       withCredentials: true
     });
     console.log(response.data);
