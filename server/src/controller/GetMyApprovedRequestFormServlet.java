@@ -12,15 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 @WebServlet(name = "GetMyRequestFormServlet")
-public class GetMyRequestFormServlet extends HttpServlet {
+public class GetMyApprovedRequestFormServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,7 +39,7 @@ public class GetMyRequestFormServlet extends HttpServlet {
                 }
             }
             System.out.println("id=" + id);
-            ResultSet result = q.getWaitingRequestFormById(id);
+            ResultSet result = q.getApprovedRequestFormById(id);
             System.out.println(result.toString());
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
             while (result.next()) {
