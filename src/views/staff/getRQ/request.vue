@@ -9,87 +9,8 @@
         <v-card-text>
           <v-form v-model="valid">
             <v-container>
-              <v-row>
-                <h2>Part 1: Personal Info</h2>
-              </v-row>
-              <br />
-              <br />
-              <!-- Row 1: Firstname & Lastname -->
-              <v-row>
-                <v-col cols="1"></v-col>
-                <v-col cols="4">
-                  <v-text-field
-                    v-model="firstname"
-                    :rules="nameRules"
-                    :counter="20"
-                    label="First name"
-                    clearable
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="2"></v-col>
-                <v-col cols="4">
-                  <v-text-field
-                    v-model="lastname"
-                    :rules="nameRules"
-                    :counter="20"
-                    label="Last name"
-                    clearable
-                    required
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-              <!-- Row 2: Email & Phone No. -->
-              <v-row>
-                <v-col cols="1"></v-col>
-                <v-col md="4">
-                  <v-text-field
-                    v-model="email"
-                    :rules="emailRules"
-                    label="E-mail"
-                    clearable
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="2"></v-col>
-                <v-col md="4">
-                  <v-text-field
-                    v-model="phone"
-                    :rules="telRules"
-                    :counter="10"
-                    label="Phone"
-                    clearable
-                    required
-                  ></v-text-field>
-                </v-col>
-              </v-row>
-              <!-- Row 3: Department & Brunch -->
-              <v-row>
-                <v-col cols="1"></v-col>
-                <v-col md="4">
-                  <v-select
-                    v-model="department"
-                    :items="states"
-                    :rules="[v => !!v || 'Input your department']"
-                    label="Department"
-                    required
-                  ></v-select>
-                </v-col>
-                <v-col cols="2"></v-col>
-                <v-col md="4">
-                  <v-select
-                    :items="states1"
-                    label="Branch"
-                    v-model="branch"
-                    :rules="[v => !!v || 'Choose the branch you want to sending']"
-                  ></v-select>
-                </v-col>
-              </v-row>
-              <br />
-              <br />
-              <hr />
-              <br />
-              <br />
+            
+               
               <v-row>
                 <h2>Part 2: Information</h2>
               </v-row>
@@ -161,19 +82,19 @@
                 </v-col>
               </v-row>
               <!-- Row 7: Import File -->
-              <v-row>
-                <v-col cols="1"></v-col>
-                <v-col cols="10">
-                  <v-file-input multiple label="Import File (if any)"></v-file-input>
-                </v-col>
-              </v-row>
+              
               <br />
               <br />
               <hr />
               <br />
               <br />
               <v-row>
+                <v-col cols="3">
                 <h2>Part 3: Send to</h2>
+                 </v-col>
+                  <v-col>
+                <h4>Which department do you want to send</h4>
+                 </v-col>
               </v-row>
               <br />
               <br />
@@ -477,26 +398,16 @@ export default {
     newStaff() {
       axios
         .post("/api/requestServlet", null, {
+          withCredentials: true,
           params: {
-            form_no: this.form_no,
-            // staff_id: this.staff_id,
-            // // topic: this.topic,
-            // description: this.description,
+            topic: this.topic,
+            description: this.description,
             from_date: this.from_date,
-            lastname: this.lastname,
             to_date: this.to_date,
-            // send_date: this.send_date,
-            // attach_file: this.attach_file,
-            // return_date: this.return_date,
-            comment: this.comment,
-            // address: this.address,
+            send_to:this.send_to
+          
 
-            firstname: this.firstname,
-
-            email: this.email,
-            phone: this.phone,
-            branch: this.branch,
-            department: this.department
+          
           }
         })
         .then(() => this.$router.push({ name: "staff" }))

@@ -12,7 +12,9 @@ export default {
     components: {
     },
   async mounted() {
-    const response = await axios.get("/api/Staffs");
+    const response = await axios.get("/api/DispprovedReceivedRequestFormServlet",{
+      withCredentials: true
+    });
     console.log(response.data);
     this.data = response.data;  
     this.information=this.data
@@ -28,13 +30,14 @@ export default {
         text: "id",
         align: "lastname",
         sortable: false,
-        value: "id"
+        value: "staff_id"
       },
-      { text: "firstname", value: "name" },
-      { text: "lastname", value: "lastname" },
-      { text: "id", value: "id" },
-      { text: "date of employed", value: "date_of_employed" },
-      { text: "salary", value: "salary" }
+      { text: "Firstname", value: "name" },
+      { text: "Lastname", value: "lastname" },
+      { text: "Topic", value: "topic" },
+      { text: "Description", value: "description" },
+       { text: "Comment", value: "comment" },
+      { text: "Status", value: "status" }
     ]
   })
 };

@@ -72,6 +72,45 @@
         <url-pattern>/ReceivedRequestFormServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>WaitingReceivedRequestFormServlet</servlet-name>
+        <servlet-class>controller.WaitingReceivedRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WaitingReceivedRequestFormServlet</servlet-name>
+        <url-pattern>/WaitingReceivedRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ApprovedReceivedRequestFormServlet</servlet-name>
+        <servlet-class>controller.ApprovedReceivedRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApprovedReceivedRequestFormServlet</servlet-name>
+        <url-pattern>/ApprovedReceivedRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>DispprovedReceivedRequestFormServlet</servlet-name>
+        <servlet-class>controller.DispprovedReceivedRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispprovedReceivedRequestFormServlet</servlet-name>
+        <url-pattern>/DispprovedReceivedRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ApproveRequestServlet</servlet-name>
+        <servlet-class>controller.ApproveRequestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApproveRequestServlet</servlet-name>
+        <url-pattern>/ApproveRequestServlet</url-pattern>
+    </servlet-mapping>
+
+
+
 
 
 

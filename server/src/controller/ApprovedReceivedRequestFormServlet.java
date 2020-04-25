@@ -39,6 +39,7 @@ public class ApprovedReceivedRequestFormServlet extends HttpServlet {
                 }
             }
             System.out.println("id=" + id);
+            System.out.println("Approved");
             ResultSet result = q.getApprovedRequestFormBySendTo(q.getDepartmentFromId(id));
             System.out.println(result.toString());
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();

@@ -7,7 +7,6 @@
       </router-link>
       <v-toolbar-title class="d-flex align-center title1">CS Banking</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn @click="logout">Log out</v-btn>
     </v-app-bar>
 
 
@@ -19,10 +18,15 @@
               <v-list-item-content>
                 <v-list-item-title v-text="item.text"></v-list-item-title>
               </v-list-item-content>
+      
             </v-list-item>
           </router-link>
         </v-list-item-group>
+            
       </v-list>
+         <v-list-item>
+        <a @click="logout" style="color: black;">Log out</a>
+        </v-list-item>
     </v-navigation-drawer>
   </nav>
 </template>
@@ -54,7 +58,7 @@
           { text: "Approve Cheque", link: "/Open" },
           { text: "Request Form", link: "/Open" },
           { text: "Calendar", link: "/Open" },
-          { text: "Log out", link: "/" }
+        
         ]
       };
     },

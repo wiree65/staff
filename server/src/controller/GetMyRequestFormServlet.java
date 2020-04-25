@@ -43,8 +43,7 @@ public class GetMyRequestFormServlet extends HttpServlet {
                 }
             }
             System.out.println("id=" + id);
-            ResultSet result = q.getRequestFormByid(id);
-            System.out.println(result.toString());
+            ResultSet result = q.getWaitingRequestFormById(id);
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
             while (result.next()) {
                 int staff_id = result.getInt("id");
