@@ -55,6 +55,25 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>DisapproveGetRequestFormServlet</servlet-name>
+        <servlet-class>controller.DisapproveGetRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisapproveGetRequestFormServlet</servlet-name>
+        <url-pattern>/DisapproveGetRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>ApprovedGetRequestFormServlet</servlet-name>
+        <servlet-class>controller.ApprovedGetRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApprovedGetRequestFormServlet</servlet-name>
+        <url-pattern>/ApprovedGetRequestFormServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>PersonalInfoServlet</servlet-name>
         <servlet-class>controller.PersonalInfoServlet</servlet-class>
     </servlet>

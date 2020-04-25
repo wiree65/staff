@@ -37,15 +37,15 @@ export default {
     ],
     headers: [
       {
-        text: "Sent to",
+        text: "Form No.",
         align: "lastname",
-        sortable: false,
-        value: "send_to"
+        sortable: true,
+        value: "form_no"
       },
       { text: "Topic", value: "topic" },
       { text: "Description", value: "description" },
+      { text: "Sent to", value: "send_to" },
       { text: "Status", value: "status" },
-      { text: "Comment", value: "comment" }
     ]
   })
 };

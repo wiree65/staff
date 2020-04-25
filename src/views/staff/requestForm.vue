@@ -8,7 +8,9 @@
           </v-col>
           <v-col>
             <v-tabs v-model="tabs">
-              <v-tab>Your Request</v-tab>
+              <v-tab>Waiting Request</v-tab>
+              <v-tab>Approved Request</v-tab>
+              <v-tab>Disapproved Request</v-tab>
               <v-tab>Request</v-tab>
             </v-tabs>
           </v-col>
@@ -23,6 +25,26 @@
             </v-card-text>
           </v-card>
         </v-tab-item>
+        
+        <v-tab-item>
+          <v-card flat>
+            <v-card-text>
+           <approved/>
+              <!-- ------------------info--------------------- -->
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+
+        <v-tab-item>
+          <v-card flat>
+            <v-card-text>
+           <disapproved/>
+              <!-- ------------------info--------------------- -->
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+
+
         <v-tab-item>
           <v-card flat>
             <v-card-text>
@@ -42,10 +64,12 @@
   import Nav from "../../components/Nav";
   import request from "./getRQ/request.vue"
   import getRquest from "./getRQ/getRequest.vue"
+  import approved from "./getRQ/approved.vue"
+  import disapproved from "./getRQ/disapproved.vue"
   export default {
     components: {
       Nav,
-      request,getRquest
+      request,getRquest,approved,disapproved
     },
     data() {
       return {

@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-@WebServlet(name = "WaitingReceivedRequestFormServlet")
+@WebServlet(name = "DisapproveGetRequestFormServlet")
 public class DisapproveGetRequestFormServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
