@@ -33,7 +33,7 @@
               <v-row>
                 <v-col cols="1"></v-col>
                 <v-col md="10">
-                  <v-textarea name="input-7-1" label="Description" v-model="comment"></v-textarea>
+                  <v-textarea name="input-7-1" label="Description" v-model="description"></v-textarea>
                 </v-col>
               </v-row>
               <!-- Row 6: From-to of absent -->
@@ -50,9 +50,9 @@
                     min-width="290px"
                   >
                     <template v-slot:activator="{ on }">
-                      <v-text-field v-model="to_date" label="From" readonly v-on="on" required></v-text-field>
+                      <v-text-field v-model="from_date" label="From" readonly v-on="on" required></v-text-field>
                     </template>
-                    <v-date-picker v-model="to_date" no-title scrollable>
+                    <v-date-picker v-model="from_date" no-title scrollable>
                       <v-spacer></v-spacer>
                       <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
                       <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
@@ -71,9 +71,9 @@
                     min-width="290px"
                   >
                     <template v-slot:activator="{ on }">
-                      <v-text-field v-model="date" label="To" readonly v-on="on"></v-text-field>
+                      <v-text-field v-model="to_date" label="To" readonly v-on="on"></v-text-field>
                     </template>
-                    <v-date-picker v-model="date" no-title scrollable>
+                    <v-date-picker v-model="to_date" no-title scrollable>
                       <v-spacer></v-spacer>
                       <v-btn text color="primary" @click="menu2 = false">Cancel</v-btn>
                       <v-btn text color="primary" @click="$refs.menu2.save(date)">OK</v-btn>
@@ -102,7 +102,7 @@
                 <v-col cols="1"></v-col>
                 <v-col cols="4">
                   <v-select
-                    v-model="sendDepartment"
+                    v-model="send_to"
                     :items="depart"
                     :rules="[v => !!v || 'Choose the department you want to sending']"
                     label="Department"
@@ -410,7 +410,7 @@ export default {
           
           }
         })
-        .then(() => this.$router.push({ name: "staff" }))
+        // .then(() => this.$router.push({ name: "staff" }))
         .catch(console.log);
     }
   }

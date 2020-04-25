@@ -200,9 +200,10 @@ public class QueryModel {
         executeQuery(query);
 
     }
-    public void insertRequestForm(String form_no,String staff_id,String topic,String description,String from_date,String to_date,String send_date,String attach_file,String return_date,String comment){
-        String query = String.format("INSERT INTO staff_request(form_no,staff_id,topic,description,from_date,to_date,send_date,attach_file,return_date,comment) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')",
-                form_no,staff_id,topic,description,from_date,to_date,send_date,attach_file,return_date,comment);
+    //GETDATE()
+    public void insertRequestForm(String staff_id,String from_date,String topic,String description,String to_date,String send_to){
+        String query = String.format("INSERT INTO staff_request(staff_id,from_date,topic,description,to_date,send_to,send_date) VALUES('%s','%s','%s','%s','%s','%s',GETDATE())",
+                staff_id,from_date,topic,description,to_date,send_to);
         System.out.println(query);
         executeQuery(query);
     }
