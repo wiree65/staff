@@ -11,7 +11,7 @@ import getRequestStaff from "../views/manager/request/getRequestStaff";
 import unconfirmed from "../views/manager/request/unconfirmed";
 import calendar from "../views/staff/calendar";
 import info1 from "../views/manager/info";
-import calendar1 from "../components/calendar";
+import calendar1 from "../views/manager/calendar/2getCalendar";
 
 // import loginv1 from "../views/loginv1";//
 
@@ -43,7 +43,7 @@ const routes = [
     path: "/",
     name: "loginv1",
     component: () =>
-      import("../views/loginv1.vue")
+      import("../views/designLogin.vue")
   }, {
     path: "/register",
     name: "register",

@@ -1,9 +1,7 @@
 <template>
   <div>
     <!-- //////////////Login/////////////// -->
-    <div class="box white pa-12">
-    </div>
-    <div class="box white pa-9">
+    <div class="box white pa-8">
     </div>
     <!--top box / color: blue-->
     <v-container style="position: relative;">
@@ -50,7 +48,7 @@
           </v-col>
           <!-- Button Login -->
           <v-col cols="2" class="scopeBox">
-            <v-btn text color="primary"> Login</v-btn>
+            <v-btn text color="primary" @click="login()"> Login</v-btn>
           </v-col>
           <v-col cols="2">
           </v-col>
@@ -105,29 +103,33 @@
       passwordE: false
     }),
 
-    methods: {
-      login() {
-        this.$v.$touch();
-        if (!this.$v.name.$invalid && !this.$v.password.$invalid) {
-          let formData = new FormData();
-          formData.append("username", this.name);
-          formData.append("password", this.password);
+   methods: {
+    login() {
+      this.$v.$touch();
+      if (!this.$v.name.$invalid && !this.$v.password.$invalid) {
+        let formData = new FormData();
+        formData.append("username", this.name);
+        formData.append("password", this.password);
 
-          axios
-            .post("api/SigninServlet", formData, {
-              withCredentials: true
-            })
-            .then((respond) => {
-              auth.setLogin(true);
-              if (respond.data.role == "manager") {
-                this.$router.push("/homepage");
-              }
-              else {
-                this.$router.push("/allWork");
-              }
-            }).catch(alert("something went wrong"));
-        }
+        axios
+          .post("api/SigninServlet", formData, {
+            withCredentials: true
+          })
+          .then((respond) => {
+            auth.setLogin(true);
+            if(respond.data.role=="manager"){
+            this.$router.push("/manager");}
+            else if(respond.data.role=="staff") {
+              this.$router.push("/homepage");
+            }else if(respond.data.role!="manager"||respond.data.role!="staff"){
+              alert("Something Wrong");
+        
+            }
+          }
+
+          )
       }
+    }
     }
   };
 </script>

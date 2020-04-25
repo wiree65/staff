@@ -95,9 +95,11 @@ export default {
       this.$router.push('/');
       alert("please login")
     }
+      console.log(this.$auth);
   },
+  
   mounted() {
-    // console.log(this.$auth);    
+      
     axios
           .get("api/GetStaffServlet", {
             withCredentials: true

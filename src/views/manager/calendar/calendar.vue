@@ -1,6 +1,6 @@
 <template>
   <v-row class="fill-height">
-    <Nav/>
+   
     <v-col>
       <v-sheet height="64">
         <v-toolbar flat color="white">
@@ -43,7 +43,7 @@
           </v-menu>
         </v-toolbar>
       </v-sheet>
-      <v-sheet height="600">
+      <v-sheet height="450">
         <v-calendar
           ref="calendar"
           v-model="focus"
@@ -98,20 +98,11 @@
 </template>
 
 <script>
-import auth from "../../auth";
-import Nav from "../../components/Nav";
+
 import axios from "@/axios/axios";
   export default {
      components: {
-    Nav
-  },
-  created(){
-    let login = auth.getLogin();
-    console.log(login);
-    if(!login.auth){
-      this.$router.push('/');
-      alert("please login")
-    }
+  
   },
   async mounted() {
     const response = await axios.get("/api/getCalendarServlet");

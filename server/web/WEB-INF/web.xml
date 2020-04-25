@@ -72,6 +72,15 @@
         <url-pattern>/getCalendarServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>InsertCalendar</servlet-name>
+        <servlet-class>controller.InsertCalendar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertCalendar</servlet-name>
+        <url-pattern>/InsertCalendar</url-pattern>
+    </servlet-mapping>
+
 
 
     <servlet>
