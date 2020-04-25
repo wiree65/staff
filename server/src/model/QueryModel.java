@@ -275,7 +275,12 @@ public class QueryModel {
 
         return hexString.toString();
     }
-
+    public void InsertCalendar(String start_date,String end_date, String detail, String event_name){
+        String query = String.format("INSERT INTO staff_calendar(start_date,end_date,detail,event_name) VALUES('%s','%s','%s','%s')",
+                start_date,end_date,detail,event_name);
+        System.out.println(query);
+        executeQuery(query);
+    }
 
 
     public String getDepartmentFromId(String id){

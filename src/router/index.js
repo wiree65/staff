@@ -11,6 +11,7 @@ import getRequestStaff from "../views/manager/request/getRequestStaff";
 import unconfirmed from "../views/manager/request/unconfirmed";
 import calendar from "../views/staff/calendar";
 import info1 from "../views/manager/info";
+import calendar1 from "../components/calendar";
 
 // import loginv1 from "../views/loginv1";//
 
@@ -81,6 +82,10 @@ const routes = [
     path: "/unconfirmed",
     name: "unconfirmed",
     component: unconfirmed
+  },{
+    path: "/calendar1",
+    name: "calendar1",
+    component: calendar1
   }
  
 ];

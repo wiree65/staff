@@ -35,8 +35,8 @@ public class getCalendarServlet extends HttpServlet {
                 String event_name = result.getString("event_name");
                 String start_date = result.getString("start_date");
                 String end_date = result.getString("end_date");
-
-                calendar calendar = new calendar(event_name,start_date,end_date);
+                String detail = result.getString("detail");
+                calendar calendar = new calendar(event_name,start_date,end_date,detail);
                 b.add(calendar);
             }
             Gson gson = new Gson();

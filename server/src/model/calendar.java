@@ -4,11 +4,21 @@ public class calendar {
     String name;
     String start;
     String end;
+    String detail;
 
-    public calendar(String name, String start, String end) {
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public calendar(String name, String start, String end,String detail) {
         this.name = name;
         this.start = start;
         this.end = end;
+        this.detail=detail;
     }
 
     public String getName() {
