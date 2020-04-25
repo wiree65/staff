@@ -232,9 +232,9 @@ public class QueryModel {
         executeQuery(query);
     }
 
-    public ResultSet getAllRequestForm() {
+    public ResultSet getCalendar() {
         try {
-            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id ");
+            String query = String.format("SELECT * FROM staff_calendar");
             System.out.println(query);
             preparedStatement = conn.prepareStatement(query);
             ResultSet result = preparedStatement.executeQuery();

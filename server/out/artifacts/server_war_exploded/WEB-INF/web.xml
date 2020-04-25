@@ -63,6 +63,15 @@
         <url-pattern>/DisapproveGetRequestFormServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>getCalendarServlet</servlet-name>
+        <servlet-class>controller.getCalendarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getCalendarServlet</servlet-name>
+        <url-pattern>/getCalendarServlet</url-pattern>
+    </servlet-mapping>
+
 
 
     <servlet>
