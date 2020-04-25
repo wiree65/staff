@@ -46,27 +46,21 @@ public class GetMyRequestFormServlet extends HttpServlet {
             ResultSet result = q.getWaitingRequestFormById(id);
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
             while (result.next()) {
-                int staff_id = result.getInt("id");
-                String name = result.getString("name");
-                String lastname = result.getString("lastname");
-                String tel = result.getString("tel");
-                String email = result.getString("email");
-                String department = result.getString("name");
-                String branch = result.getString("name");
+                int staff_id = result.getInt("staff_id");
+
                 int form_no = result.getInt("form_no");
                 String topic = result.getString("topic");
                 String description = result.getString("description");
-                String from_date = result.getString("from_date");
-                String to_date = result.getString("to_date");
+
                 String send_date = result.getString("send_date");
-                String attach_file = result.getString("attach_file");
+
                 String comment = result.getString("comment");
                 String status = result.getString("status");
                 String return_date = result.getString("return_date");
-                String send_to = result.getString("send_to");
+                String send_to = result.getString("send_to_name");
 
 
-                RequestForm requestform = new RequestForm(staff_id, name, lastname, tel, email, department, branch, form_no, topic, description, from_date, to_date, send_date, attach_file, comment, status, return_date, send_to);
+                RequestForm requestform = new RequestForm(staff_id, form_no, topic, description,send_date , comment, status, return_date, send_to);
 
                 b.add(requestform);
             }
