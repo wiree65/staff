@@ -42,6 +42,75 @@ public class QueryModel {
         return null;
     }
 
+
+    public ResultSet getRequestFormBySendTo(String department) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date,staff_request.send_to from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff_request.send_to = '%s'",department);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ResultSet getApprovedRequestFormBySendTo(String department) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date,staff_request.send_to from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff_request.send_to = '%s' AND status = 'Approved'",department);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+     public ResultSet getWaitingRequestFormById(String id) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date , staff_request.send_to from staff Inner Join department on staff_request.send_to = department.manager Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff.id = '%s' AND status = 'Waiting' ",id);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public ResultSet getWaitingRequestFormBySendTo(String department) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date,staff_request.send_to from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff_request.send_to = '%s' AND status = 'Waiting'",department);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ResultSet getDisapprovedRequestFormBySendTo(String department) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date,staff_request.send_to from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff_request.send_to = '%s' AND status = 'Disapproved'",department);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public void approveRequestFormByFormNO(String comment,String status,String form_no){
+        String query = String.format("UPDATE staff_request SET comment = '%s', status = '%s',return_date = GETDATE() WHERE form_no = '%s'",comment,status,form_no);
+        System.out.println(query);
+        executeQuery(query);
+    }
+
+
     public ResultSet statementQuery(String query) {
         try {
             preparedStatement = conn.prepareStatement(query);
@@ -92,8 +161,6 @@ public class QueryModel {
         while (result.next()) {
             managerId = result.getInt("manager_id");
         }
-        System.out.println("managerID="+managerId);
-        System.out.println(managerId==(id));
         return managerId==id;
     }
 
@@ -122,13 +189,10 @@ public class QueryModel {
         String query=String.format("INSERT INTO staff(branch,department) VALUES ('%s','%s')",branch,department);
         System.out.println(query);
         executeQuery(query);
-
-
-
     }
 
 
-    public void insertRequestFormName( String firstname ,String lastname,String email,String phone,String department,String branch,String comment) throws NoSuchAlgorithmException {
+    public void insertRequestFormName(String firstname ,String lastname,String email,String phone,String department,String branch,String comment) throws NoSuchAlgorithmException {
 
         String query = String.format("INSERT INTO staff_request(firstname,lastname,email,phone,department,branch,comment) VALUES('%s','%s','%s','%s','%s','%s','%s')",
                 firstname,lastname,email,phone,department,branch,comment);
@@ -136,10 +200,17 @@ public class QueryModel {
         executeQuery(query);
 
     }
+    //GETDATE()
+    public void insertRequestForm(String staff_id,String from_date,String topic,String description,String to_date,String send_to){
+        String query = String.format("INSERT INTO staff_request(staff_id,from_date,topic,description,to_date,send_to,send_date) VALUES('%s','%s','%s','%s','%s','%s',GETDATE())",
+                staff_id,from_date,topic,description,to_date,send_to);
+        System.out.println(query);
+        executeQuery(query);
+    }
 
     public ResultSet getAllRequestForm() {
         try {
-            String query = String.format("SELECT * FROM staff_request");
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id ");
             System.out.println(query);
             preparedStatement = conn.prepareStatement(query);
             ResultSet result = preparedStatement.executeQuery();
@@ -152,7 +223,9 @@ public class QueryModel {
 
     public ResultSet getRequestFormByid(String id) {
         try {
-            String query = String.format("SELECT * FROM staff_request WHERE staff_id='%s'",id);
+
+            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date from staff Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff.id = '%s'",id);
+
             System.out.println(query);
             preparedStatement = conn.prepareStatement(query);
             ResultSet result = preparedStatement.executeQuery();
@@ -178,6 +251,40 @@ public class QueryModel {
 
         return hexString.toString();
     }
+
+
+
+    public String getDepartmentFromId(String id){
+        try {
+            String query = String.format("select department from staff where id ='%s'",id);
+
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            String staffDepartment="";
+            while (result.next()) {
+                String department = ""+result.getInt("department");
+                staffDepartment = department;
+            }
+            return staffDepartment;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+     public ResultSet getStaffFromId(String id){
+        try {
+            String query = String.format("SELECT staff.id,staff.username,staff.name,staff.lastname,staff.email,staff.tel,staff.date_of_birth,department.name,branch.name,staff.address,staff.date_of_employed,staff.salary,staff.created_at,staff.update_at,staff.citizen_id,staff.sex,staff.nickname from staff INNER JOIN  department  on staff.department  = department.id INNER JOIN branch on staff.branch = branch.id where staff.id = '%s'",id);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 
 
 

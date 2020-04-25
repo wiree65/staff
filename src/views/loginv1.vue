@@ -70,11 +70,13 @@ export default {
           .then((respond) => {
             auth.setLogin(true);
             if(respond.data.role=="manager"){
-            this.$router.push("/homepage");}
-            else{
-              this.$router.push("/allWork");
+            this.$router.push("/manager");}
+            else if(respond.data.role=="staff") {
+              this.$router.push("/homepage");
+            }else if(respond.data.role!="manager"||respond.data.role!="staff"){
+              alert("Something Went Wrong");
             }
-          }) .catch(alert("something went wrong"));
+          })
       }
     }
   }

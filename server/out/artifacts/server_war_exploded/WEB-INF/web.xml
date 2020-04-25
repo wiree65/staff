@@ -12,14 +12,7 @@
         <servlet-name>Staffs</servlet-name>
         <url-pattern>/Staffs</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>controller.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
-    </servlet-mapping>
+
     <servlet>
         <servlet-name>SigninServlet</servlet-name>
         <servlet-class>controller.SigninServlet</servlet-class>
@@ -52,6 +45,72 @@
         <servlet-name>requestServlet</servlet-name>
         <url-pattern>/requestServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GetMyRequestFormServlet</servlet-name>
+        <servlet-class>controller.GetMyRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetMyRequestFormServlet</servlet-name>
+        <url-pattern>/GetMyRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PersonalInfoServlet</servlet-name>
+        <servlet-class>controller.PersonalInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PersonalInfoServlet</servlet-name>
+        <url-pattern>/PersonalInfoServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ReceivedRequestFormServlet</servlet-name>
+        <servlet-class>controller.ReceivedRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReceivedRequestFormServlet</servlet-name>
+        <url-pattern>/ReceivedRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>WaitingReceivedRequestFormServlet</servlet-name>
+        <servlet-class>controller.WaitingReceivedRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WaitingReceivedRequestFormServlet</servlet-name>
+        <url-pattern>/WaitingReceivedRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ApprovedReceivedRequestFormServlet</servlet-name>
+        <servlet-class>controller.ApprovedReceivedRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApprovedReceivedRequestFormServlet</servlet-name>
+        <url-pattern>/ApprovedReceivedRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>DispprovedReceivedRequestFormServlet</servlet-name>
+        <servlet-class>controller.DispprovedReceivedRequestFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispprovedReceivedRequestFormServlet</servlet-name>
+        <url-pattern>/DispprovedReceivedRequestFormServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ApproveRequestServlet</servlet-name>
+        <servlet-class>controller.ApproveRequestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApproveRequestServlet</servlet-name>
+        <url-pattern>/ApproveRequestServlet</url-pattern>
+    </servlet-mapping>
+
+
+
 
 
 

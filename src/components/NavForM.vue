@@ -2,12 +2,11 @@
   <nav>
     <v-app-bar app color="blue darken-2" light>
       <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
-      <router-link to="/homepage" style="color: black;">
+      <router-link to="/manager" style="color: black;">
         <v-img src="../assets/logo.png" max-width="60px" class="mr-3"></v-img>
       </router-link>
       <v-toolbar-title class="d-flex align-center title1">CS Banking</v-toolbar-title>
       <v-spacer></v-spacer>
-  
     </v-app-bar>
 
 
@@ -15,16 +14,17 @@
       <v-list flat>
         <v-list-item-group v-model="item" color="black">
           <router-link :to="item.link" v-for="(item, i) in items" :key="i" style="text-decoration: none;color: black;">
-
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-title v-text="item.text"></v-list-item-title>
               </v-list-item-content>
+      
             </v-list-item>
           </router-link>
         </v-list-item-group>
+            
       </v-list>
-      <v-list-item>
+         <v-list-item>
         <a @click="logout" style="color: black;">Log out</a>
         </v-list-item>
     </v-navigation-drawer>
@@ -57,7 +57,8 @@
           { text: "Personal & Status", link: "/info" },
           { text: "Approve Cheque", link: "/Open" },
           { text: "Request Form", link: "/Open" },
-          { text: "Calendar", link: "/Open" }
+          { text: "Calendar", link: "/Open" },
+        
         ]
       };
     },

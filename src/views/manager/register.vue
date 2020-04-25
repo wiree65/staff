@@ -245,7 +245,7 @@
   </div>
 </template>
 <script>
-import Nav from "../components/Nav";
+import Nav from "../../components/NavForM";
 import equipment from "@/axios/axios";
 export default {
   components: {
@@ -439,7 +439,7 @@ export default {
             department: this.department
           }
         })
-        .then(() => this.$router.push({ name: "staff" }))
+        .then(() => this.$router.push({ name: "manager" }))
         .catch(console.log);
     }
   }

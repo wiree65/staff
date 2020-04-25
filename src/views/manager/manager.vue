@@ -9,12 +9,12 @@
           <v-container class="con1">
             <v-row style="height: 100%;">
               <v-col cols="6" class="center">
-                <img src="../assets/Ellipse 7.png" style="width:250px;padding: 12px;" />
+                <img src="../../assets/Ellipse 7.png" style="width:250px;padding: 12px;" />
               </v-col>
               <v-col cols="6">
                 <v-col cols="2"></v-col>
                 <v-col>
-                  <h1 class="center">STAFF</h1>
+                  <h1 class="center">MANAGER</h1>
                 </v-col>
                 <v-col>
                   <h4 class="center">Name:{{this.info.name}}</h4>
@@ -32,28 +32,37 @@
         <!-- align-items: center; -->
         <!-- justify-content: center; -->
         <v-col cols="6">
-          <v-container class="con1" style="display:grid;">
+          <v-container class="con1" style="display:grid;padding:0px">
             <v-col>
-              <router-link to="/info">
+              <router-link to="/info1">
                 <v-btn large color="#1976D2" style="width: 90%;;margin-left: 5%;">
                   <p style="color: white;font-size:150%;margin-bottom: 0px;">Personal Info & Status</p>
                 </v-btn>
               </router-link>
             </v-col>
             <v-col>
+              <router-link to="/getRequestStaff" style="text-decoration: none;">
               <v-btn large color="#1E88E5" style="width: 90%;;margin-left: 5%;">
-                <p style="color: white;font-size: 150%;margin-bottom: 0px;">Approve Cheque</p>
+                <p style="color: white;font-size: 150%;margin-bottom: 0px;">Approve request</p>
               </v-btn>
+               </router-link>
             </v-col>
             <v-col>
-              <router-link to="/request" style="text-decoration: none;">
+              <router-link to="/register" style="text-decoration: none;">
                 <v-btn large color="#42A5F5" style="width: 90%;margin-left: 5%;">
-                  <p style="color: white;font-size: 150%;margin-bottom: 0px;">Request Form</p>
+                  <p style="color: white;font-size: 150%;margin-bottom: 0px;">Register</p>
                 </v-btn>
               </router-link>
             </v-col>
             <v-col>
-              <router-link to="/about" style="text-decoration: none;">
+            <router-link to="/allWork" style="text-decoration: none;">
+              <v-btn large color="#64B5F6" style="width: 90%;margin-left: 5%;">
+                <p style="color: white;font-size: 150%;margin-bottom: 0px;">Access History</p>
+              </v-btn>
+            </router-link>
+          </v-col>
+            <v-col>
+              <router-link to="/calendar" style="text-decoration: none;">
                 <v-btn large color="#64B5F6" style="width: 90%;margin-left: 5%;">
                   <p style="color: white;font-size: 150%;margin-bottom: 0px;">Calendar</p>
                 </v-btn>
@@ -67,9 +76,9 @@
 </template>
 
 <script>
-import auth from "../auth";
-import Nav from "../components/Nav";
-import Carousel from "../components/Carousel";
+import auth from "../../auth";
+import Nav from "../../components/NavForM";
+import Carousel from "../../components/Carousel";
 import axios from "@/axios/axios";
 export default {
   components: {
@@ -88,12 +97,13 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$auth);    
+    // console.log(this.$auth);    
     axios
-          .post("api/GetStaffServlet",null, {
+          .get("api/GetStaffServlet", {
             withCredentials: true
           })
           .then((response) => {
+            console.log(response.data)
             this.info =response.data;
           });
   }

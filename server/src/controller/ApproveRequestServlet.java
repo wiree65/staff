@@ -13,13 +13,14 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 
 //form_no, staff_id, topic, description, from_date, to_date, send_date, attach_file, return_date, return_date
-@WebServlet(name = "requestServlet")
-public class requestServlet extends HttpServlet {
+@WebServlet(name = "ApproveRequestServlet")
+public class ApproveRequestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         this.setAccessControlHeaders(response);
-        try {
+        System.out.println("test");
+        try  {
             QueryModel q = new QueryModel();
             Cookie[] c = request.getCookies();
             String id = "";
@@ -30,29 +31,23 @@ public class requestServlet extends HttpServlet {
                     }
                 }
             }
-            System.out.println("staffid="+id);
-            ResultSet result = q.getStaffFromName(id);
-
-
-            String topic = request.getParameter("topic");
-            String description = request.getParameter("description");
-            String from_date = request.getParameter("from_date");
-            String to_date = request.getParameter("to_date");
-            String send_to = request.getParameter("send_to");
-            String firstname="";
-            String lastname="";
-            String staff_id="";
-
+            System.out.println("id=" + id);
+            System.out.println("aproving");
+            ResultSet result = q.getWaitingRequestFormBySendTo(q.getDepartmentFromId(id));
+            String form_no="";
             while(result.next()){
-                staff_id =result.getString("id");
+                form_no =result.getString("form_no");
+
             }
 
-            System.out.println("request");
+            String comment = request.getParameter("comment");
+            String status = request.getParameter("status");
+            System.out.println("status="+status);
+
+            PrintWriter out = response.getWriter();
             QueryModel queryModel = new QueryModel();
-            queryModel.insertRequestForm( staff_id,from_date,topic,description,to_date,send_to.substring(0,2));
-//
-
-
+            queryModel.approveRequestFormByFormNO(comment,status,form_no);
+            out.print("success");
         } catch (Exception e) {
             e.printStackTrace();
         }
