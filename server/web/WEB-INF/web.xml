@@ -46,12 +46,12 @@
         <url-pattern>/requestServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>GetMyRequestFormServlet</servlet-name>
-        <servlet-class>controller.GetMyRequestFormServlet</servlet-class>
+        <servlet-name>WaitingGetRequestFormServlet</servlet-name>
+        <servlet-class>controller.WaitingGetRequestFormServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>GetMyRequestFormServlet</servlet-name>
-        <url-pattern>/GetMyRequestFormServlet</url-pattern>
+        <servlet-name>WaitingGetRequestFormServlet</servlet-name>
+        <url-pattern>/WaitingGetRequestFormServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>

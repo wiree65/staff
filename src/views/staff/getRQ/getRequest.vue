@@ -10,20 +10,20 @@
 <script>
 
 import axios from "@/axios/axios";
-
+import auth from "../../../auth";
 export default {
     components: {
     },
-//  created(){
-//     let login = auth.getLogin();
-//     console.log(login);
-//     if(!login.auth){
-//       this.$router.push('/');
-//       alert("please login")
-//     }
-//   },
+ created(){
+    let login = auth.getLogin();
+    console.log(login);
+    if(!login.auth){
+      this.$router.push('/');
+      alert("please login")
+    }
+  },
   async mounted() {
-    const response = await axios.get("/api/GetMyRequestFormServlet",{  withCredentials: true});
+    const response = await axios.get("/api/WaitingGetRequestFormServlet",{  withCredentials: true});
     console.log(response.data);
     this.data = response.data;
   
@@ -37,16 +37,15 @@ export default {
     ],
     headers: [
       {
-        text: "id",
+        text: "Sent to",
         align: "lastname",
         sortable: false,
-        value: "staff_id"
+        value: "send_to"
       },
-      { text: "firstname", value: "name" },
-      { text: "lastname", value: "lastname" },
-      { text: "topic", value: "topic" },
-      { text: "description", value: "description" },
-      { text: "status", value: "status" }
+      { text: "Topic", value: "topic" },
+      { text: "Description", value: "description" },
+      { text: "Status", value: "status" },
+      { text: "Comment", value: "comment" }
     ]
   })
 };

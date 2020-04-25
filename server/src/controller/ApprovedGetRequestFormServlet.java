@@ -12,15 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-@WebServlet(name = "GetMyRequestFormServlet")
-public class WaitingGetMyRequestFormServlet extends HttpServlet {
+@WebServlet(name = "ApprovedGetRequestFormServlet")
+public class ApprovedGetRequestFormServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,25 +39,22 @@ public class WaitingGetMyRequestFormServlet extends HttpServlet {
                 }
             }
             System.out.println("id=" + id);
-            ResultSet result = q.getWaitingRequestFormById(id);
+            System.out.println("Waiting");
+            ResultSet result = q.getApprovedRequestFormById(id);
+            System.out.println(result.toString());
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
             while (result.next()) {
-                int staff_id = result.getInt("staff_id");
 
                 int form_no = result.getInt("form_no");
                 String topic = result.getString("topic");
                 String description = result.getString("description");
-
-                String send_date = result.getString("send_date");
 
                 String comment = result.getString("comment");
                 String status = result.getString("status");
                 String return_date = result.getString("return_date");
                 String send_to = result.getString("send_to_name");
 
-
-                RequestForm requestform = new RequestForm(staff_id, form_no, topic, description,send_date , comment, status, return_date, send_to);
-
+                RequestForm requestform = new RequestForm( form_no, topic, description,  comment, status, return_date, send_to);
                 b.add(requestform);
             }
             Gson gson = new Gson();

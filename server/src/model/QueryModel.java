@@ -69,7 +69,31 @@ public class QueryModel {
     }
      public ResultSet getWaitingRequestFormById(String id) {
         try {
-            String query = String.format("SELECT DISTINCT staff.id , staff.name, staff.lastname, staff.tel, staff.email, department.name, branch.name,staff_request.form_no, staff_request.topic,staff_request.description, staff_request.from_date,staff_request.to_date, staff_request.send_date,staff_request.attach_file ,staff_request.comment ,staff_request.status,staff_request.return_date , staff_request.send_to from staff Inner Join department on staff_request.send_to = department.manager Inner Join branch on staff.branch = branch.id INNER JOIN staff_request on staff.id= staff_request.staff_id WHERE staff.id = '%s' AND status = 'Waiting' ",id);
+            String query = String.format("SELECT DISTINCT staff.id , RSQ.form_no, RSQ.topic,RSQ.description,RSQ.send_date ,RSQ.comment ,RSQ.status,RSQ.return_date,send_to, (select department.name from department  inner join staff_request on department.id  = send_to where staff_request.form_no = RSQ.form_no)AS send_to_name from staff  Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request  AS RSQ on staff.id = staff_id  AND status='waiting' where staff_id = '%s' ",id);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ResultSet getApprovedRequestFormById(String id) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , RSQ.form_no, RSQ.topic,RSQ.description,RSQ.send_date ,RSQ.comment ,RSQ.status,RSQ.return_date,send_to, (select department.name from department  inner join staff_request on department.id  = send_to where staff_request.form_no = RSQ.form_no)AS send_to_name from staff  Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request  AS RSQ on staff.id = staff_id  AND status='Approved' where staff_id = '%s' ",id);
+            System.out.println(query);
+            preparedStatement = conn.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public ResultSet getDisapprovedRequestFormById(String id) {
+        try {
+            String query = String.format("SELECT DISTINCT staff.id , RSQ.form_no, RSQ.topic,RSQ.description,RSQ.send_date ,RSQ.comment ,RSQ.status,RSQ.return_date,send_to, (select department.name from department  inner join staff_request on department.id  = send_to where staff_request.form_no = RSQ.form_no)AS send_to_name from staff  Inner Join department on staff.department = department.id Inner Join branch on staff.branch = branch.id INNER JOIN staff_request  AS RSQ on staff.id = staff_id  AND status='disapproved' where staff_id = '%s' ",id);
             System.out.println(query);
             preparedStatement = conn.prepareStatement(query);
             ResultSet result = preparedStatement.executeQuery();

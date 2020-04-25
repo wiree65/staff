@@ -1,14 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-<<<<<<< HEAD
-// import Home from "../views/Home.vue";
-// import Nav from "../components/Nav";
-import staff from "../views/staff";
-import register from "../views/register";
-import register1 from "../views/Registerr";
-import allWork from "../views/allWork";
-import designLogin from "../views/designLogin";
-=======
 import staff from "../views/staff/staff";
 import register from "../views/manager/register";
 import allWork from "../views/manager/allWork";
@@ -21,7 +12,6 @@ import unconfirmed from "../views/manager/request/unconfirmed";
 import calendar from "../views/staff/calendar";
 import info1 from "../views/manager/info";
 
->>>>>>> master
 // import loginv1 from "../views/loginv1";//
 
 Vue.use(VueRouter);
@@ -72,15 +62,6 @@ const routes = [
     name: "requestForm",
     component: requestForm
   }, {
-<<<<<<< HEAD
-    path: "/register1",
-    name: "register1",
-    component: register1
-  }, {
-    path: "/designLogin",
-    name: "designLogin",
-    component: designLogin
-=======
     path: "/approve",
     name: "approve",
     component: approve
@@ -100,7 +81,6 @@ const routes = [
     path: "/unconfirmed",
     name: "unconfirmed",
     component: unconfirmed
->>>>>>> master
   }
  
 ];

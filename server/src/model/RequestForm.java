@@ -44,6 +44,15 @@ public class RequestForm {
         this.send_to = send_to;
     }
 
+    public RequestForm(int form_no, String topic, String description, String send_date, String comment, String status, String return_date, String send_to) {
+        this.form_no=form_no;this.topic=topic;this.description=description;this.send_date=send_date;this.comment=comment;this.status=status;this.return_date=return_date;this.send_date=send_to;
+
+    }
+
+    public RequestForm(int form_no, String topic, String description, String comment, String status, String return_date, String send_to) {
+        this.form_no=form_no;this.topic=topic;this.description=description;this.send_date=send_date;this.comment=comment;this.status=status;this.return_date=return_date;this.send_to=send_to;
+    }
+
     public String getSend_to() {
         return send_to;
     }

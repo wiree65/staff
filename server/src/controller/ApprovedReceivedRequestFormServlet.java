@@ -44,6 +44,7 @@ public class ApprovedReceivedRequestFormServlet extends HttpServlet {
             System.out.println(result.toString());
             ArrayList<RequestForm> b = new ArrayList<RequestForm>();
             while (result.next()) {
+
                 int staff_id = result.getInt("id");
                 String name = result.getString("name");
                 String lastname = result.getString("lastname");
@@ -62,6 +63,7 @@ public class ApprovedReceivedRequestFormServlet extends HttpServlet {
                 String status = result.getString("status");
                 String return_date = result.getString("return_date");
                 String send_to = result.getString("send_to");
+
 
                 RequestForm requestform = new RequestForm(staff_id, name, lastname, tel, email, department, branch, form_no, topic, description, from_date, to_date, send_date, attach_file, comment, status, return_date, send_to);
                 b.add(requestform);
