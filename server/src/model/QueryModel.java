@@ -29,19 +29,6 @@ public class QueryModel {
         }
         return null;
     }
-    public ResultSet getStaffFromName(String id) {
-        try {
-            String query = String.format("SELECT * FROM staff WHERE id='%s'",id);
-
-            preparedStatement = conn.prepareStatement(query);
-            ResultSet result = preparedStatement.executeQuery();
-            return result;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
 
     public ResultSet getRequestFormBySendTo(String department) {
         try {
