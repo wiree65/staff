@@ -45,8 +45,8 @@ public class PersonalInfoServlet extends HttpServlet {
                 String email= result.getString("email");
                 String tel= result.getString("tel");
                 String date_of_birth= result.getString("date_of_birth");
-                String department= result.getString("name");
-                String branch= result.getString("name");
+                String department= result.getString("department");
+                String branch= result.getString("branch");
                 String address= result.getString("address");
                 String date_of_employed= result.getString("date_of_employed");
                 String salary= result.getString("salary");
