@@ -31,7 +31,7 @@ public class GetStaffServlet extends HttpServlet {
                 }
             }
             System.out.println("staffid="+id);
-            ResultSet result = q.getStaffFromName(id);
+            ResultSet result = q.getStaffFromId(id);
             String json = "{";
             String name = "";
             String lastname = "";

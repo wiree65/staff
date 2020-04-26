@@ -189,7 +189,7 @@ public class QueryModel {
     }
 
 
-    public int getCustomerId(String username) throws Exception {
+    public int getStaffId(String username) throws Exception {
         try {
             String query = String.format("select id from staff where username='%s'", username);
 
