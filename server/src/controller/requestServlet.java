@@ -31,7 +31,7 @@ public class requestServlet extends HttpServlet {
                 }
             }
             System.out.println("staffid="+id);
-            ResultSet result = q.getStaffFromId(id);
+//            ResultSet result = q.getStaffFromId(id);
 
 
             String topic = request.getParameter("topic");
@@ -39,11 +39,11 @@ public class requestServlet extends HttpServlet {
             String from_date = request.getParameter("from_date");
             String to_date = request.getParameter("to_date");
             String send_to = request.getParameter("send_to");
-            String staff_id="";
+            String staff_id=id;
 
-            while(result.next()){
-                staff_id =result.getString("id");
-            }
+//            while(result.next()){
+//                staff_id =result.getString("id");
+//            }
 
             System.out.println("request");
             QueryModel queryModel = new QueryModel();
