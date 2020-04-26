@@ -35,14 +35,12 @@ public class GetStaffServlet extends HttpServlet {
             String json = "{";
             String name = "";
             String lastname = "";
-            String email = "";
             while(result.next()){
                 name =result.getString("name");
                 lastname =result.getString("lastname");
             }
             json +="\"name\":"+"\""+name+"\",";
             json +="\"lastname\":"+"\""+lastname+"\",";
-            json +="\"email\":"+"\""+email+"\",";
             json += "\"id\":"+"\""+id+"\"}";
             PrintWriter out = response.getWriter();
 //            System.out.println(json);
