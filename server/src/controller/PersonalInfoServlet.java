@@ -55,7 +55,8 @@ public class PersonalInfoServlet extends HttpServlet {
                 String citizen_id= result.getString("citizen_id");
                 String sex= result.getString("sex");
                 String nickname= result.getString("nickname");
-                StaffInfo staff = new StaffInfo(id1,username, name,lastname,email,tel,date_of_birth,department,branch, address, date_of_employed,salary,created_at,update_at,citizen_id,sex,nickname);
+                String profile_image = result.getString("profile_image");
+                StaffInfo staff = new StaffInfo(id1,username, name,lastname,email,tel,date_of_birth,department,branch, address, date_of_employed,salary,created_at,update_at,citizen_id,sex,nickname,profile_image);
                 b.add(staff);
             }
             Gson gson = new Gson();

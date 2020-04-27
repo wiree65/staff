@@ -19,8 +19,9 @@ public class StaffInfo {
     String citizen_id;
     String sex;
     String nickname;
+    String profile_image;
 
-    public StaffInfo(int id, String username, String name, String lastname, String email, String tel, String date_of_birth, String department, String branch, String address, String date_of_employed, String salary, String created_at, String update_at, String citizen_id, String sex, String nickname) {
+    public StaffInfo(int id, String username, String name, String lastname, String email, String tel, String date_of_birth, String department, String branch, String address, String date_of_employed, String salary, String created_at, String update_at, String citizen_id, String sex, String nickname, String profile_image) {
         this.id = id;
         this.username = username;
         this.name = name;
@@ -38,6 +39,15 @@ public class StaffInfo {
         this.citizen_id = citizen_id;
         this.sex = sex;
         this.nickname = nickname;
+        this.profile_image = profile_image;
+    }
+
+    public String getProfile_image() {
+        return profile_image;
+    }
+
+    public void setProfile_image(String profile_image) {
+        this.profile_image = profile_image;
     }
 
     public int getId() {

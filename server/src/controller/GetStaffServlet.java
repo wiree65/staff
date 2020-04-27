@@ -35,12 +35,15 @@ public class GetStaffServlet extends HttpServlet {
             String json = "{";
             String name = "";
             String lastname = "";
+            String profile_image="";
             while(result.next()){
                 name =result.getString("name");
                 lastname =result.getString("lastname");
+                profile_image = result.getString("profile_image");
             }
             json +="\"name\":"+"\""+name+"\",";
             json +="\"lastname\":"+"\""+lastname+"\",";
+            json +="\"profile_image\":"+"\""+profile_image+"\",";
             json += "\"id\":"+"\""+id+"\"}";
             PrintWriter out = response.getWriter();
 //            System.out.println(json);
