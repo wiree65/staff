@@ -50,8 +50,8 @@ public class ApprovedReceivedRequestFormServlet extends HttpServlet {
                 String lastname = result.getString("lastname");
                 String tel = result.getString("tel");
                 String email = result.getString("email");
-                String department = result.getString("name");
-                String branch = result.getString("name");
+                String department = result.getString("department");
+                String branch = result.getString("branch");
                 int form_no = result.getInt("form_no");
                 String topic = result.getString("topic");
                 String description = result.getString("description");

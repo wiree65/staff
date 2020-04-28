@@ -31,7 +31,6 @@ public class RegisterServlet extends HttpServlet {
             String department = request.getParameter("department");
             String address = request.getParameter("address");
             String date_of_employed = request.getParameter("date_of_employed");
-            String date_of_fired = request.getParameter("date_of_fired");
             String salary = request.getParameter("salary");
             String branch = request.getParameter("branch");
             String citizen_id = request.getParameter("citizen_id");

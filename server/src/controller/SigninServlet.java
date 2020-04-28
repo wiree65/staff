@@ -27,7 +27,7 @@ public class SigninServlet extends HttpServlet {
             boolean auth = q.checkPassword(username,password);
 //            System.out.println(auth);
             if(auth){
-                int staffID =q.getCustomerId(username); //82
+                int staffID =q.getStaffId(username); //82
 //                System.out.println("StaffID"+staffID);
                 response.setStatus(200);
                 if(q.isManager(staffID)){ //82
