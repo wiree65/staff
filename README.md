@@ -62,6 +62,34 @@
 
   > Create the event to the staff and view event
 
+### 3. Assets
+
+- `Ellipse 7.png`
+
+  > Representing the profile picture for staff and manager
+
+- `key-variant 1.png`
+
+  > Icon representing the forget password feature
+
+- `logo-white2.png`
+
+  > Representing the transparent white logo in bank 
+
+### 4. Components (ยกเว้น calendar)*
+
+- `/Carousel`
+
+  > Slide show for announcement of bank
+
+- `/Nav`
+
+  > Nav bar for staff
+
+- `/NavForM`
+
+  > Nav bar for manager
+
 ## Backend (Servlet)
 
 ### Sign in (Authentication) 

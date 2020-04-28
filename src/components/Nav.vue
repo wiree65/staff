@@ -3,7 +3,7 @@
     <v-app-bar app color="blue darken-2" light>
       <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
       <router-link to="/homepage" style="color: black;">
-        <v-img src="../assets/logo.png" max-width="60px" class="mr-3"></v-img>
+        <v-img src="../assets/logo-original.png" max-width="60px" class="mr-3"></v-img>
       </router-link>
       <v-toolbar-title class="d-flex align-center title1">CS Banking</v-toolbar-title>
       <v-spacer></v-spacer>

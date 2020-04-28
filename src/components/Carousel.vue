@@ -11,28 +11,26 @@
     ></v-carousel-item>
     
   </v-carousel> -->
+  <!-- old height is 250 -->
   <v-carousel
     cycle
-    height="250"
+    height="100%"
     hide-delimiter-background
     show-arrows-on-hover
   >
     <v-carousel-item
-      v-for="(slide, i) in slides"
+      v-for="(item, i) in items"
       :key="i"
+      :src="item.src"
     >
-      <v-sheet
-        :color="colors[i]"
-        height="100%"
-      >
-        <v-row
+
+        <!-- <v-row
           class="fill-height"
           align="center"
           justify="center"
         >
-          <div class="display-3">{{ slide }} </div>
-        </v-row>
-      </v-sheet>
+          <div class="display-3">{{ slide }} </div> -->
+        <!-- </v-row> -->
     </v-carousel-item>
   </v-carousel>
 </template>
@@ -42,16 +40,13 @@
       return {
         items: [
           {
-            src: require('../assets/announce1.png'),
+            src: require("../assets/announce01.jpg"),
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+            src: require("../assets/announce02.jpg"),
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-          },
-          {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+            src: require("../assets/announce03.jpg"),
           },
         ],colors: [
           'indigo',

@@ -20,10 +20,8 @@
           <v-row>
             <v-col cols="2"></v-col>
             <!-- Put Logo Here: CSB Banking -->
-            <v-col cols="8" style="justify-items: center;align-items: center;display:grid;">
-              <br />
-              <img src="../assets/logo-white2.png" style="width: 200px;" />
-            </v-col>
+            <v-col cols="8" style="justify-items: center;align-items: center;display:grid;"> <br />
+              <img src="../assets/logo-original.png" style="width: 200px;" /></v-col>
             <v-col cols="2"></v-col>
             <v-col cols="2"></v-col>
             <!-- MSG: Welcome -->
